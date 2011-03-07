@@ -1,0 +1,58 @@
+---
+layout: post
+title: Ubuntu and VIA EPIA EN12000EG
+---
+
+h1. {{ page.title }} 
+
+p(meta). 2008-04-23
+
+*Update 21/09/08*
+
+Since I wrote this post 5 months ago I havn't been experiencing any issues with the EN12000EG when using it at 1200 MHz. However, 22 days ago I rebooted my EN12000EG and by mistake I forgot to set the CPU frequency to 1200 MHz, I didn't realise this until about a week ago when I saw that the Gnome CPU Scaling Monitor was reporting the CPU frequency as 400 MHz (ondemand governor). For this period of 22 days I've been using the server as I normally would, which 5 months ago would freeze the system within a week when using CPU scaling.
+<p style="text-align: center;"><a href="http://lukasz.dk/files/en12000eg-uptime-sept20081.png"><img class="aligncenter size-full wp-image-203" title="en12000eg-uptime-sept20081" src="http://lukasz.dk/files/en12000eg-uptime-sept20081.png" alt="" width="401" height="184" /></a>
+
+
+
+My best guess to why this is happening is probably a change in the Linux kernel which either fixed or got around this issue. The kernel I'm currently using is Linux 2.6.24-21-generic i686 GNU/Linux on Ubuntu 8.04 with all updates installed.
+
+You might also want to check the lastest <a href="http://lukasz.dk/2008/04/23/ubuntu-and-via-epia-en12000eg/#comments">comments</a>, as Sam33 is reporting freezes on Debian Etchnhalf, which he suspects are related to the PATA driver.
+
+*Original Post*
+
+Little over a month ago I bought and built myself a <a href="http://en.wikipedia.org/wiki/Mini-ITX">Mini-ITX</a> computer to use as a headless print/file/media/etc. server. For the motherboard I got a <a href="http://www.via.com.tw/en/products/mainboards/motherboards.jsp?motherboard_id=399">VIA EPIA EN12000EG</a> with a 1200 MHz CPU, because it was passively cooled. I put it inside a <a href="http://www.morex.com.tw/products/productdetail.php?fd_id=37">Morex 3688</a> chassis without using the chassis fan. After using it for a while, the system would "randomly" freeze completely. This would typically happend when I "stressed" system, eg. transfering files, printing and using VNC at the same time. There was no rise in CPU temperature when this happend, so I didn't think it was because the motherboard wasn't properly cooled without any fans running.
+
+The longest uptime I had until this point was about 6 days, but the computer would often just freeze after a few days use.
+
+So I thought it might be an I/O problem and I therefor updated the 1.07 BIOS to version 1.09, but the only thing I could tell changed was the CPU temperature was now reported as being around 20 °C instead around 45 °C previously with the 1.07 BIOS. Since this didn't resolve the system freezes either, I then tried to update to Ubuntu 8.04 beta, hoping the issue might have been resolved in the new version, however the system would still freeze on me.
+
+I had a problem with evolution-data-server using 90% of the CPU in Ubuntu 8.04, this is a <a href="https://bugs.launchpad.net/ubuntu/+source/evolution-data-server/+bug/151536">known bug</a>. I resolved it by just uninstalling evolution-data-server, as I don't use Evolution.
+bq. 
+<pre>sudo apt-get remove evolution-data-server</pre>
+
+I had earlier found this "<a href="http://www.tkarena.com/forums/linux-arena/33503-en12000eg-freeze.html">EN12000EG Freeze</a>" thread at the VIA forums (registration required), where alot of different solutions had been suggested, I tried some of the easy ones like changing the BIOS settings, but that still didn't resolve the problem. So I thought I'd try <a href="http://www.tkarena.com/forums/linux-arena/33503-en12000eg-freeze-10.html#post232636">disabling CPU frequency scaling as suggested by rararasputin</a> and this solution has worked for me so far.
+
+First I disabled _powernowd_ by in System -> Administration -> Services. However the cpu scaling software _cpufreq_ is active and uses the _On demand_ CPU scaling governor by default. There are few different ways to change this to the _Performance_ governor, which will keep the CPU at 1200 Mhz. One way is to use the _cpufreq-selector_ in a console like shown below
+bq. 
+<pre>sudo cpufreq-selector -g performance</pre>
+
+Another option, if you are using the _Gnome CPU Frequency Scaling Monitor Applet_, is that you can select the governor you wish to use using this applet. But first you need to enable user CPU scaling by the following command and answering yes to setting the suid for cpufreq-selector.
+bq. 
+<pre>dpkg-reconfigure gnome-applets</pre>
+
+Now you can left-click on the applet and choose _Performance_.
+
+A thing to note is that this setting reverts to the default _On demand_ when you reboot your system. I read that you can make it permanent by changing the _policy_ac_ key to _Performance_ in _apps -> gnome-power-manager -> cpufreq_ using _gconf-editor_, however this doesn't seem to work for me. Maybe because I use the _force=acpi_ kernel option in _/boot/grub/menu.lst_ and this somehow overrides the setting. If any one knows of a simple solution, please let me know :-)
+
+As you can see from the partial screenshot below, my VIA EN12000EG based server ran for over 11 days before Ubuntu insisted that I reboot due to an update. In the 11 days I had tried to stress the system several times, for instance transfering files while updating Ubuntu over VNC and playing internet radio. Which would often freeze the system earlier, but after disabling cpu scaling, I've been unable to freeze the system.
+<p style="text-align: center;"><a href="http://lukasz.dk/files/en12000eg-nofication.jpg"><img class="aligncenter size-full wp-image-97" title="en12000eg-nofication" src="http://lukasz.dk/files/en12000eg-nofication.jpg" alt="" width="398" height="84" /></a>
+
+
+
+My conclusion is that the VIA EN12000EG hardware has buggy CPU scaling support.
+
+As a side note, I couldn't get s-video output working with any other driver than the binary CN700 Unichrome Pro Driver. Otherwise everything else worked out of the box with both Ubuntu 7.10 and 8.04.
+
+*Update:*
+
+rararasputin posted his Openchrome xorg.conf with s-video support in the comments. <a href="http://lukasz.dk/files/en12000eg_svideo_xorg.conf">Download formatted here</a>.

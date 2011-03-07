@@ -1,0 +1,28 @@
+---
+layout: post
+title: Ubuntu 8.10 and ATI Dual Head
+---
+
+h1. {{ page.title }} 
+
+p(meta). 2009-03-17
+
+Yesterday I was trying to a get dual monitor configuration / virtual desktop (VGA and DVI)  working  in <a href="http://www.gnome.org/">GNOME</a> (Ubuntu 8.10) on my ATI Radeon HD 2400 XT graphics card with a 1920x1200 DVI screen and 1600x1200 VGA screen connected, using the proprietary <a href="http://en.wikipedia.org/wiki/Fglrx">FGLRX ATI driver</a> from the Ubuntu repositories. I tried various resources on the net to make it work, including the  <a href="http://ubuntuforums.org/showthread.php?t=301941">ATI Big-Desktop thread</a> at the Ubuntu Forums.
+
+I was unsuccessful in getting dualhead working using only the commandline aticonfig tool, so after a bit (actually alot :) of experimenting I was able to get working with using a combination of aticonfig and the Catalyst Control Center (amdcccle) tool.
+
+First thing I did was create an initial xorg.conf configuration file using the command below in shell, which sets up a basic dualhead configuration which can be altered using aticonfig and the Catalyst Control Center.
+bq. sudo aticonfig --initial=dual-head --overlay-type=Xv
+I then rebooted (I was not always able to reload the driver by just restarting X). I then started the Catalyst Control Center by typing the following in a shell
+bq. sudo amdcccle
+Its important to use sudo or else you wont be able to change the configuration. In the "Display Manager" section it is possible to setup the multi-display and specify how the screens are arranged. After you set this, reboot once again.
+<p style="text-align: center;"><a href="http://lukasz.dk/files/catalyst-control-center.png"><img class="size-medium wp-image-338 aligncenter" title="catalyst-control-center" src="http://lukasz.dk/files/catalyst-control-center-300x244.png" alt="catalyst-control-center" width="300" height="244" /></a>
+
+
+
+What should happen now is that when you restart you get the same image on both screens (mirrored/cloned). You now need to enter the GNOME Screen Resolution configuration application (which in the default Ubuntu GNOME  setup is located under System - Preferences). Here you should now be able to change the size of the desktop so that it uses the entire screenspace on both screens.
+<p style="text-align: center;"><a href="http://lukasz.dk/files/gnome-screen-resolution.png"><img class="size-medium wp-image-335 aligncenter" title="gnome-screen-resolution" src="http://lukasz.dk/files/gnome-screen-resolution-299x300.png" alt="gnome-screen-resolution" width="299" height="300" /></a>
+
+
+<p style="text-align: left;">One thing to note is that I also tried the very latest (9.2) ATI FGLRX driver, using this driver I actually got 2 screens in the GNOME Screen Resolution application. They were positioned on top of each other (Mirror Screens was checked), which was  hard to see (and figure out). But you can actually click on the screens and then drag and arrange them so that they match you physical screen configuration. So you may want to try the latest driver if the one in the Ubuntu repositories does not work for you.
+

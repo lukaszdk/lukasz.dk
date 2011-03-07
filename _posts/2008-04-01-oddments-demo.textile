@@ -1,0 +1,22 @@
+---
+layout: post
+title: Oddments Demo
+---
+
+h1. {{ page.title }} 
+
+p(meta). 2008-04-01
+
+I found an ISO of the <a href="http://breakpoint.untergrund.net/2004/">Breakpoint 2004</a> PS2 demo _Oddments_ by adresd, emoon, jar, raizor and TyRaNiD in my archive of PS2DEV files. I wrote the ISO to a CD-R and ran it on my PS2 and took some screenshots in the process. Since I was unable to find the ISO online, I uploaded it and you can download it <a href="http://lukasz.dk/playstation-2-programming/file-mirror/">here</a>.
+
+<a href="http://lukasz.dk/files/oddment1.jpg"><img class="alignnone size-thumbnail wp-image-75" title="oddment1" src="http://lukasz.dk/files/oddment1-150x150.jpg" alt="" width="150" height="150" /></a><a href="http://lukasz.dk/files/oddment2.jpg"><img class="alignnone size-thumbnail wp-image-76" title="oddment2" src="http://lukasz.dk/files/oddment2-150x150.jpg" alt="" width="150" height="150" /></a><a href="http://lukasz.dk/files/oddment3.jpg"><img class="alignnone size-thumbnail wp-image-77" title="oddment3" src="http://lukasz.dk/files/oddment3-150x150.jpg" alt="" width="150" height="150" /></a>
+
+<a href="http://lukasz.dk/files/oddment4.jpg"><img class="alignnone size-thumbnail wp-image-78" title="oddment4" src="http://lukasz.dk/files/oddment4-150x150.jpg" alt="" width="150" height="150" /></a><a href="http://lukasz.dk/files/oddment5.jpg"><img class="alignnone size-thumbnail wp-image-79" title="oddment5" src="http://lukasz.dk/files/oddment5-150x150.jpg" alt="" width="150" height="150" /></a><a href="http://lukasz.dk/files/oddment6.jpg"><img class="alignnone size-thumbnail wp-image-80" title="oddment6" src="http://lukasz.dk/files/oddment6-150x150.jpg" alt="" width="150" height="150" /></a>
+
+<a href="http://lukasz.dk/files/oddment7.jpg"><img class="alignnone size-thumbnail wp-image-81" title="oddment7" src="http://lukasz.dk/files/oddment7-150x150.jpg" alt="" width="150" height="150" /></a><a href="http://lukasz.dk/files/oddment8.jpg"><img class="alignnone size-thumbnail wp-image-82" title="oddment8" src="http://lukasz.dk/files/oddment8-150x150.jpg" alt="" width="150" height="150" /></a>
+
+This demo is a very overlooked PS2DEV production. I recommend checking it out, if you have a PS2 capable of running CD-R's. The source code for it is also available in the PS2DEV.org Subversion repository, you can obtain it with the following Subversion command:
+
+*<span class="postbody">svn co svn://<span class="linkification-ext"><a class="linkification-ext" title="Linkification: http://svn.ps2dev.org/ps2ware/trunk/BPDemoHarness" href="http://svn.ps2dev.org/ps2ware/trunk/BPDemoHarness">svn.ps2dev.org/ps2ware/trunk/BPDemoHarness</a></span></span>*
+
+The source code will most likely require some tweaking to make it compile against the the current version of PS2SDK.

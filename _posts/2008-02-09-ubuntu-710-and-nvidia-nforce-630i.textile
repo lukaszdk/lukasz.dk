@@ -1,0 +1,20 @@
+---
+layout: post
+title: Ubuntu 7.10 and Nvidia nForce 630i
+---
+
+h1. {{ page.title }} 
+
+p(meta). 2008-02-09
+
+I recently upgraded my computer and got a Gigabyte GA-73PVM-S2H motherboard, not knowing that Ubuntu 7.10 did not support the included Nvidia nForce 630i chipset out of the box. I just moved my hard drives with Ubuntu 7.10 already installed from my old computer into my new and it turned out that neither the integrated Nvidia GeForce 7100 (I already had an Nvidia driver installed) nor the sound card was automatically detected.
+
+To get the GeForce 7100 working I downloaded <a href="http://albertomilone.com/nvidia_scripts1.html">Envy</a> and then manually selected the Nvidia 169.09 driver, which was then downloaded and installed. I used _nvidia-settings_ to configure the graphics card.
+
+The sound card (HDA Intel driver) is not supported by the version of <a href="http://www.alsa-project.org">ALSA</a> included with Ubuntu 7.10, it is however supported by the latest ALSA version. So in order to get it working I had to download, compile and install the lastest ALSA driver myself, there is a guide available <a href="https://help.ubuntu.com/community/HdaIntelSoundHowto">here</a> which describes the process.
+
+The network adapter works out of the box, it uses the _forcedeth_ driver.
+
+My new system would freeze on me after a few hours of use, I suspected the Gigabyte GA-73PVM-S2H motherboard was to blame for this. After checking the <a href="http://tw.giga-byte.com/Support/Motherboard/BIOS_Model.aspx?ProductID=2691">Gigabyte website</a> for my motherboard, I saw there was a F5 BIOS update to my F2 version BIOS.  Since I use Ubuntu, I couldn't use their @BIOS Windows utility for updating the BIOS, so I had to use the BIOS built-in Q-Flash which supports updating from an USB stick.
+
+First I downloaded the BIOS update and used <a href="http://www.winehq.org/">Wine</a> to extract the update file from the .EXE update available. When I then first tried to put the update file on my USB memory stick and used Q-Flash I got an _BIOS ID checker error. _This error is apparently related to the file system used on the memory stick, since after I formated my memory stick to FAT-16 with _mkfs.vfat -F 16 /dev/sdc1_ (my memory stick shows up at /dev/sdc1, used _df_ to see where your memory stick is located) I was able to update my BIOS successfully, and I havn't experienced any freezes since.

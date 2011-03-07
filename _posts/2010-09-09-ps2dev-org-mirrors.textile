@@ -1,0 +1,18 @@
+---
+layout: post
+title: PS2Dev.org Mirrors
+---
+
+h1. {{ page.title }} 
+
+p(meta). 2010-09-09
+
+The <a href="http://ps2dev.org">ps2dev.org</a> website, the <a href="http://forums.ps2dev.org">forums </a>and the <a href="http://svn.ps2dev.org">Subversion repository</a> have  been down a lot lately. I do not know the reasons for the downtime nor do I know what the plan for the future of ps2dev.org is, however I fear that ps2dev.org will slowly cease to exist. PS2Dev.org and it projects has always been driven by a passionate few individuals and they will clearly not run the website forever. Hopefully some new talent will come along and take over, so all the valuable information available at ps2dev.org is not lost forever* :-)
+
+As a safety precaution against a worst case scenario at ps2dev.org I have made dumps of the PS2 repositories and uploaded them <a href="http://lukasz.dk/files/svn.ps2dev.org/">here</a>. More information available <a href="http://lukasz.dk/playstation-2-programming/">here</a> (see bottom of the page).
+
+Others have also made backups of the repositories: <a href="http://psp.jim.sh/svn/">jim.sh</a>, <a href="http://github.com/ps2dev">github.com/ps2dev</a>, <a href="http://github.com/ragnarok2040">github.com/ragnarok2040</a> and <a href="http://bitbucket.org/ps2dev">bitbucket.org/ps2dev</a>. Some of the repository mirrors (clones) seem to have been updated with patches since they were initially created, e.g. see <a href="http://lukasz.dk/mirror/forums.ps2dev.org/viewtopica7f3.html">this thread</a>.
+
+I also made a static mirror of the ps2dev.org forums on the 31th of August 2010, available <a href="http://lukasz.dk/mirror/forums.ps2dev.org/">here</a>. You should be able search the forum mirror using <a href="http://www.google.com/webhp?sitesearch=http://lukasz.dk/mirror/forums.ps2dev.org/">Google Site Search</a> once its has been indexed by Google.
+
+*There is of course always <a href="http://archive.org/">archive.org</a>,  however I do not find it to be the most reliable website, nor it does  not show up in the results when searching the web for information.

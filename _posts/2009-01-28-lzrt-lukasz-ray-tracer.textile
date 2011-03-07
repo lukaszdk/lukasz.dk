@@ -1,0 +1,15 @@
+---
+layout: post
+title: lzrt - Lukasz' Ray Tracer
+---
+
+h1. {{ page.title }} 
+
+p(meta). 2009-01-28
+
+As part of my master thesis in computer science I developed a <a href="http://en.wikipedia.org/wiki/Ray_tracing_(graphics)">ray tracing</a> application called lzrt - Lukasz' Ray Tracer for the <a href="http://en.wikipedia.org/wiki/Cell_(microprocessor)">Cell processor</a>. Besides from running on the Cell processor, lzrt also runs on x86 and PowerPC. I'm releasing the source code, test scenes and other information regarding lzrt for those interested in the technical details. The ray tracer does not have any advanced graphical features, as my focus was on optimizing the search for the nearest triangle a ray hits, using a kd-tree as an acceleration structure for scenes where the 3D objects move.
+<p style="text-align: center;"><img class="size-medium wp-image-280 aligncenter" title="ss01-cell" src="http://lukasz.dk/files/ss01-cell-300x300.png" alt="ss01-cell" width="300" height="300" />
+
+
+<p style="text-align: left;">For more information, <a href="http://lukasz.dk/software/lzrt/">click here</a>.
+

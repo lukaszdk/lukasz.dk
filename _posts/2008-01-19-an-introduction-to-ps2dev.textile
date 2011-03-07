@@ -1,0 +1,10 @@
+---
+layout: post
+title: An Introduction to PS2DEV
+---
+
+h1. {{ page.title }} 
+
+p(meta). 2008-01-19
+
+I've written an article which tries to give an introduction to PS2DEV, <a href="http://lukasz.dk/playstation-2-programming/an-introduction-to-ps2dev/">read it here</a>. Feel free to comment, suggest additions and corrections in <a href="http://forums.ps2dev.org/viewtopic.php?p=63784">this thread</a> at <a href="http://forums.ps2dev.org">forums.PS2DEV.org</a> or at the bottom of the article.
