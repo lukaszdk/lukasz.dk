@@ -1,1 +1,7 @@
 markdown: rdiscount
+permalink: pretty
+
+domain: lukasz.dk
+title: Lukasz.dk - Personal website of Lukasz Bruun
+author: Lukasz Bruun
+email: mail@lukasz.dk

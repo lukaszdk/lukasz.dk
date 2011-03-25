@@ -51,6 +51,7 @@ table {
   font: 100%;
 }
 
+
 /*****************************************************************************/
 /*
 /* Home
@@ -157,7 +158,16 @@ ul.posts a
 
 }
 
+img 
+{
+    display: block;   
+    margin-left: auto;   
+    margin-right: auto; 
+}
+
   /* standard */
+  
+  
 
   #post pre {
     border: 1px solid #ddd;
