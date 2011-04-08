@@ -92,6 +92,14 @@ ul.posts a
   line-height: 1.5em;
 }
 
+
+.site h1 
+{
+	font-size: 100%;
+	color: black;
+	  margin-bottom: 1em;
+}
+
 .title {
   color: #a00;
   font-weight: bold;
@@ -208,6 +216,13 @@ img
 	color: #2382c8;
 	display: inline;
 	font-size: 25px;
+	margin-bottom: 1em; 
+}
+
+#post h2
+{
+	margin-top: 1em; 
+	font-size: 20px;
 }
 
 #related {
@@ -217,3 +232,18 @@ img
   #related h2 {
     margin-bottom: 1em;
   }
+
+
+/*****************************************************************************/
+/*
+/* Global
+/*
+/*****************************************************************************/
+
+h1
+{
+	color: #2382c8;
+	display: inline;
+	font-size: 25px;
+}
+
