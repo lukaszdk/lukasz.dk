@@ -87,7 +87,7 @@ ul.posts a
 .site {
   font-size: 110%;
   text-align: justify;
-  width: 40em;
+  width: 600px;
   margin: 3em auto 2em auto;
   line-height: 1.5em;
 }
@@ -168,13 +168,12 @@ ul.posts a
 
 img 
 {
-    display: block;   
+    display: block; 
     margin-left: auto;   
-    margin-right: auto; 
+    margin-right: auto;
 }
 
   /* standard */
-  
   
 
   #post pre {
@@ -246,4 +245,24 @@ h1
 	display: inline;
 	font-size: 25px;
 }
+
+.shadow
+{
+	  float:left;
+	  clear:left; 
+	  background: url(/images/shadowAlpha.png) no-repeat bottom right !important;
+	  background: url(/images/shadow.gif) no-repeat bottom right;
+	  margin: 10px 25px 10px 25px !important;
+	  margin: 10px 25px 10px 25px;
+}
+.shadow img
+{
+	display: block; 
+	position: relative;
+	background-color: #fff;
+	border: 1px solid #a9a9a9;
+	margin: -6px 6px 6px -6px;
+	padding: 4px;
+}
+
 

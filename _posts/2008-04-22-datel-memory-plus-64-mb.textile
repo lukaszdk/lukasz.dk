@@ -7,44 +7,51 @@ h1. {{ page.title }}
 
 p(meta). 2008-04-22
 
-Recently I stumbled upon some interesting information regarding Datel's new PS2 memory card _Memory Plus 64 MB_ at <a href="http://www.ps2savetools.com/article.php?sid=200&mode=thread&order=0&thold=0">PS2 Save Tools</a>. What caught my eye were the instructions for this memory card, as they state that you can load an PS2 ELF of the memory card or a USB Pendrive, without the need to load CD/DVD software.
+Recently I stumbled upon some interesting information regarding Datel's new PS2 memory card _Memory Plus 64 MB_ at "PS2 Save Tools":http://www.ps2savetools.com/article.php?sid=200&mode=thread&order=0&thold=0. What caught my eye were the instructions for this memory card, as they state that you can load an PS2 ELF of the memory card or a USB Pendrive, without the need to load CD/DVD software.
 
-<a href="http://lukasz.dk/files/mpluss.jpg"><img class="alignnone size-thumbnail wp-image-87" title="mpluss" src="http://lukasz.dk/files/mpluss-150x150.jpg" alt="" width="150" height="150" /></a><a href="http://lukasz.dk/files/mplusinstructions.jpg"><img class="alignnone size-thumbnail wp-image-86" title="mplusinstructions" src="http://lukasz.dk/files/mplusinstructions-150x150.jpg" alt="" width="150" height="150" /></a>
+<div class="shadow">!/images/mplusinstructions.jpg!</div>
 
-Since this memory card could be used for launching PS2Link directly of the memory card itself or an USB Pendrive and thereby enabling PS2 programming on an unmodified PS2 console, I went ahead and bought one from the <a href="http://www.codejunkies.com/">Codejunkies</a> webshop (also available from <a href="http://www.play-asia.com/paOS-13-71-p-49-en-15-memory+plus-70-2on8.html">Play-Asia</a>).
+Since this memory card could be used for launching PS2Link directly of the memory card itself or an USB Pendrive and thereby enabling PS2 programming on an unmodified PS2 console, I went ahead and bought one from the "Codejunkies":http://www.codejunkies.com/ webshop.
 
 I was unfortunate to get a memory card where built-in software was not installed, but after sending an email to Codejunkies, I returned the card to them and some days later I got it back and this time the built-in software did boot when the memory card was inserted to either PS2 memory card slot.
 
 The built-in memory card manager takes about 25 seconds load, for the entire period there is a black screen. Below are some screenshots of the memory manager and how it shows up the PS2 memory card browser.
 
-<a href="http://lukasz.dk/files/mplus1.jpg"><img class="alignnone size-thumbnail wp-image-88" title="mplus1" src="http://lukasz.dk/files/mplus1-150x150.jpg" alt="" width="150" height="150" /></a><a href="http://lukasz.dk/files/mplus2.jpg"><img class="alignnone size-thumbnail wp-image-89" title="mplus2" src="http://lukasz.dk/files/mplus2-150x150.jpg" alt="" width="150" height="150" /></a><a href="http://lukasz.dk/files/mplus-browser.jpg"><img class="alignnone size-thumbnail wp-image-91" title="mplus-browser" src="http://lukasz.dk/files/mplus-browser-150x150.jpg" alt="" width="150" height="150" /></a>
+<div class="shadow">!/images/mplus1.jpg!</div>
 
-I was hoping I could just insert an USB pendrive to one of the PS2 USB ports, with PS2Link named RUNME1.ELF and it would boot, <span style="text-decoration: line-through;">however none of my 4 USB pendrives were recognized by the built in memory manager. I tried FAT 12/16/32 file systems, also FAT32 W95 LBA, but none of them seemed to work. One of the pendrives I tried was the 16 MB Pendrive from Datel's own Max Drive product, which is recognized in the Max Drive memory manager, which looks very similar.</span>
-<p style="text-align: center;"><a href="http://lukasz.dk/files/max-memory.jpg"><img class="alignnone size-thumbnail wp-image-93" title="max-memory" src="http://lukasz.dk/files/max-memory-150x150.jpg" alt="" width="150" height="150" /></a>
+<div class="shadow">!/images/mplus2.jpg!</div>
+
+<div class="shadow">!/images/mplus-browser.jpg!</div>
+
+I was hoping I could just insert an USB pendrive to one of the PS2 USB ports, with PS2Link named RUNME1.ELF and it would boot, -however none of my 4 USB pendrives were recognized by the built in memory manager. I tried FAT 12/16/32 file systems, also FAT32 W95 LBA, but none of them seemed to work. One of the pendrives I tried was the 16 MB Pendrive from Datel's own Max Drive product, which is recognized in the Max Drive memory manager, which looks very similar.-
+
+<div class="shadow">!/images/max-memory.jpg!</div>
+
+Since the memory manager wasn't helping me get PS2Link launched, I had to figure out some other way of getting it onto the memory card and so the "hacking" begins.
+
+For transferring data to the memory card of my chipped PS2 I used ps2netfs.irx from PS2SDK. This IRX provides an interface to file systems on the PS2 over the network. I used _fsclient_ as the client (part of _ps2client_ package), combined with PS2Link/ps2client. Before you can access the memory cards with ps2netfs, you need to load the memory card IOP modules SIO2MAN and MCMAN from the BIOS. The following 3 commands below load ps2netfs with memory card support.
 
 
-
-Since the memory manager wasn't helping me get PS2Link launched, I had to figure out some other way of getting it onto the memory card and so the "hacking" begins :-)
-
-For transfering data to the memory card of my chipped PS2 I used ps2netfs.irx from PS2SDK. This IRX provides an interface to file systems on the PS2 over the network. I used _fsclient_ as the client (part of _ps2client_ package), combined with PS2Link/ps2client. Before you can access the memory cards with ps2netfs, you need to load the memory card IOP modules SIO2MAN and MCMAN from the BIOS. The following 3 commands below load ps2netfs with memory card support.
-bq. ps2client -t 1 execiop rom0:SIO2MAN
+pre. ps2client -t 1 execiop rom0:SIO2MAN
 ps2client -t 1 execiop rom0:MCMAN
 ps2client -t 1 execiop host:ps2netfs.irx
+
+
 Once this was done, I could now browse the Memory Plus memory card.
-bq. 
-<pre>fsclient dir mc0:</pre>
-<pre>[Contents of mc0:]</pre>
-<pre>drwxrwxrwx          6 04-08-2008 17:01:30 .
+
+pre. fsclient dir mc0:
+Contents of mc0:]
+drwxrwxrwx          6 04-08-2008 17:01:30 .
 drw-rw-rw-          0 04-08-2008 16:53:54 ..
 -r-xr-xr-x         14 04-08-2008 16:53:57 BEEXEC-SYSTEM
 -r-xr-xr-x         14 04-08-2008 16:55:26 BAEXEC-SYSTEM
-drwxrwxrwx          6 04-22-2008 02:29:47 BESLES-00000 MP</pre>
+drwxrwxrwx          6 04-22-2008 02:29:47 BESLES-00000 MP
 
 The BEEXEC-SYSTEM and BAEXEC-SYSTEM directories contain the same files, to support respectively European (E) and American (A) PS2 models.
-bq. 
-<pre>fsclient dir "mc0:BEEXEC-SYSTEM"</pre>
-<pre>[Contents of mc0:BEEXEC-SYSTEM]</pre>
-<pre>drwxrwxrwx          0 04-08-2008 16:53:57 .
+
+pre. fsclient dir "mc0:BEEXEC-SYSTEM"
+[Contents of mc0:BEEXEC-SYSTEM]
+drwxrwxrwx          0 04-08-2008 16:53:57 .
 drwxrwxrwx          0 04-08-2008 16:53:57 ..
 -rwxrwxrwx    1344000 04-08-2008 16:54:00 osd110.elf
 -rwxrwxrwx    1344000 04-08-2008 16:54:06 osd120.elf
@@ -57,25 +64,25 @@ drwxrwxrwx          0 04-08-2008 16:53:57 ..
 -rwxrwxrwx    1344000 04-08-2008 16:54:47 osd190.elf
 -rwxrwxrwx    1344000 04-08-2008 16:54:54 osdmain.elf
 -rwxrwxrwx        964 04-08-2008 16:55:13 icon.sys
--rwxrwxrwx      33688 04-08-2008 16:55:19 mcp.ico</pre>
+-rwxrwxrwx      33688 04-08-2008 16:55:19 mcp.ico
 
 These directories are what make booting an ELF of the memory card possible in the first place. Sony included support for updating the OSD (the software which starts when you power on your PS2 without any game in it) of the PS2 in the PS2 BIOS. The OSD looks for a osd1xx.elf on the memory, what ELF filename exactly depends on your PS2 model, hence thats why all the osd1xx.elf files are identical.
 
-The reason this "exploit" hasn't been discovered earlier is because the OSD ELF's on the memory must be encrypted with <a href="http://en.wikipedia.org/wiki/MagicGate">MagicGate</a> or the OSD won't load the ELF's. So it's not really an exploit, just a feature protected by encryption. Even though the Memory Plus is a 64 MB memory card, which will be the main the selling point for the memory card, the more interesting part is the fact that Datel have managed to <span style="text-decoration: line-through;">encrypt</span> inject their own code into already encrypted ELF's for this <a href="http://www.eurasia.nu/modules.php?name=News&file=article&sid=759">GateCrasher</a> based memory card.
+The reason this "exploit" hasn't been discovered earlier is because the OSD ELF's on the memory must be encrypted with "MagicGate":http://en.wikipedia.org/wiki/MagicGate or the OSD won't load the ELF's. So it's not really an exploit, just a feature protected by encryption. Even though the Memory Plus is a 64 MB memory card, which will be the main the selling point for the memory card, the more interesting part is the fact that Datel have managed to -encrypt- inject their own code into already encrypted ELF's for this "GateCrasher":http://www.eurasia.nu/modules.php?name=News&file=article&sid=759"> based memory card.
 
-Anyway, returning to the original task of getting PS2Link to boot of the memory card. While listing the contents of the "BESLES-00000 MP", I realised that this is the directory in which the RUNME1.ELF and RUNME2.ELF should be put, as it already contained a RUNME.ELF.
-bq. 
-<pre>fsclient dir "mc0:BESLES-00000 MP"</pre>
-<pre>[Contents of mc0:BESLES-00000 MP]</pre>
-<pre>drwxrwxrwx          0 04-08-2008 16:56:54 .
+Anyway, returning to the original task of getting PS2Link to boot of the memory card. While listing the contents of the "BESLES-00000 MP", I realized that this is the directory in which the RUNME1.ELF and RUNME2.ELF should be put, as it already contained a RUNME.ELF.
+
+pre. fsclient dir "mc0:BESLES-00000 MP"
+[Contents of mc0:BESLES-00000 MP]
+drwxrwxrwx          0 04-08-2008 16:56:54 .
 drwxrwxrwx          0 04-08-2008 16:56:54 ..
 -rwxrwxrwx     763200 04-08-2008 16:56:56 RUNME.ELF
 -rwxrwxrwx        964 04-08-2008 16:57:09 icon.sys
--rwxrwxrwx      33688 04-08-2008 16:57:15 mcp.ico</pre>
+-rwxrwxrwx      33688 04-08-2008 16:57:15 mcp.ico
 
-First thing I did was make a copy of RUNME.ELF (should I accidently overwrite it) with the following command.
-bq. 
-<pre>fsclient copyfrom "mc0:BESLES-00000 MP/RUNME.ELF" mplus-manager.elf</pre>
+First thing I did was make a copy of RUNME.ELF (should I accidentally overwrite it) with the following command.
+
+pre. fsclient copyfrom "mc0:BESLES-00000 MP/RUNME.ELF" mplus-manager.elf
 
 As you might have already guessed from the command above, the RUNME.ELF is the built-in memory card manager of the Memory Plus card. I tried to load the mplus-manager.elf (filename of RUNME.ELF copy) using PS2Link and it runs just fine.
 
@@ -84,40 +91,38 @@ This means that the files in the BEEXEC-SYSTEM and BAEXEC-SYSTEM directories are
 I'm would be very interested in hearing from any one who might have a  different version of the memory card manager (filesize of mine is 763200 bytes), as another version might have proper USB pendrive support.
 
 I copied PS2LINK.ELF using the following fsclient command
-bq. 
-<pre>fsclient copyto PS2LINK.ELF "mc0:BESLES-00000 MP/RUNME1.ELF"</pre>
 
-I then rebooted my PS2 with the memory card inserted into the first slot and waited more than 25 seconds and nothing happend. So I decided to try something a bit simpler than PS2Link and tried my very own simple <a href="http://www.lukasz.dk/ps2dev/ttc/demos/round26/torus-lkz.zip">Torus demo</a> from <a href="http://lukasz.dk/playstation-2-programming/the-third-creation/">The Third Creation</a> and it did boot ;-)
-<p style="text-align: center;"><a href="http://lukasz.dk/files/mplus-torus.jpg"><img class="alignnone size-thumbnail wp-image-95" title="mplus-torus" src="http://lukasz.dk/files/mplus-torus-150x150.jpg" alt="" width="150" height="150" /></a>
+pre. fsclient copyto PS2LINK.ELF "mc0:BESLES-00000 MP/RUNME1.ELF"
 
+I rebooted my PS2 with the memory card inserted into the first slot and waited more than 25 seconds and nothing happened. I then tried something a bit simpler than PS2Link, my very own simple "Torus demo":/ps2dev/ttc/demos/round26/torus-lkz.zip from "The Third Creation":/playstation-2-programming/the-third-creation/ and it booted just fine.
 
+<div class="shadow">!/images/mplus-torus.jpg!</div>
 
 So the fun of debugging begins. The unknown factors in finding the bug(s) which caused PS2Link not to boot are, how is the ELF loaded by the encrypted launcher on the memory card and how is the method different from how ELF's are normally loaded?
 
 I suspected the issue might be with the arguments passed to PS2Link, as PS2Link uses these to figure out from which device it was booted. So I made a small PS2SDK application which prints the arguments to the screen using _scr_printf()_. However it turned out that this simple application did not boot of the memory either. In fact, the first line of code in _main_ never got executed (changing BGCOLOR). This could only mean that the issue was within the _crt0.s_ (_C runtime entry point_) code, so I commented all the code related to argument handling, as the launcher code probably passes garbage arguments to the ELF when it loads it and this case is not handled by crt0.s, which causes the PS2 to hang/crash. After doing this, my simple application did boot of the memory card. I made some quick changes to PS2Link to make it support the altered crt0.s and hardcoded the boot path inside the PS2Link source. And PS2Link booted of the Memory Plus card.
-<p style="text-align: center;"><a href="http://lukasz.dk/files/mplus-ps2link.jpg"><img class="alignnone size-thumbnail wp-image-94" title="mplus-ps2link" src="http://lukasz.dk/files/mplus-ps2link-150x150.jpg" alt="" width="150" height="150" /></a>
 
+<div class="shadow">!/images/mplus-ps2link.jpg!</div>
 
+-A precompiled version of the PS2Link 1.51 ELF which boots of the Memory Plus memory card is avaliable "here":/files/PS2LINK_151_MPLUS.ELF"-
 
-<span style="text-decoration: line-through;">A precompiled version of the PS2Link 1.51 ELF which boots of the Memory Plus memory card is avaliable <a href="http://lukasz.dk/files/PS2LINK_151_MPLUS.ELF">here</a>.</span>
+-A real patch should be made for crt0.s, so it would support the arguments passed by the Memory Plus loader without breaking any existing code. This task will require more time than I spent on getting PS2Link running. I will submit a patch for crt0.s once I get the time to develop it, unless some one beats me to it *hint hint* :) This crt0.s patch is required to make any PS2SDK based applications boot of the memory card.-
 
-<span style="text-decoration: line-through;">A real patch should be made for crt0.s, so it would support the arguments passed by the Memory Plus loader without breaking any existing code. This task will require more time than I spent on getting PS2Link running. I will submit a patch for crt0.s once I get the time to develop it, unless some one beats me to it *hint hint* :-) This crt0.s patch is required to make any PS2SDK based applications boot of the memory card.</span>
-
-<span style="text-decoration: line-through;">Once crt0.s is patched, making the required changes to PS2Link should be easy, if the Memory Plus card can be uniquely identified based upon the arguments passed to _main()_.</span>
+-Once crt0.s is patched, making the required changes to PS2Link should be easy, if the Memory Plus card can be uniquely identified based upon the arguments passed to _main()_.-
 
 *Update:*
 
-Based upon <a href="http://lukasz.dk/2008/04/22/datel-memory-plus-64-mb/#comment-556">the comment by PS2onCrack</a>, I tried to format my Pendrives yet again to FAT32 and it turns out that one of my 4 pendrives is actually detected by the Memory Plus manager. In order to format it properly under Ubuntu I had to do the following: First find where its mounted with the _df_ command (my pendrive partition mounts at /dev/sdb1). Then umount the partition.
-bq. 
-<pre>sudo umount /dev/sdb1</pre>
+Based upon a comment by PS2onCrack I tried to format my Pendrives yet again to FAT32 and it turns out that one of my 4 pendrives is actually detected by the Memory Plus manager. In order to format it properly under Ubuntu I had to do the following: First find where its mounted with the _df_ command (my pendrive partition mounts at /dev/sdb1). Then umount the partition.
+
+pre. sudo umount /dev/sdb1
 
 Then use fdisk, to change system id of the partition to "W95 FAT32"
-bq. 
-<pre>sudo fdisk /dev/sdb</pre>
+
+pre. sudo fdisk /dev/sdb
 
 Note that I use /dev/sdb (the device) and not /dev/sdb1 (the partition). With fdisk I used the _t_ option (Change system id), then _b_ for "W95 FAT32", and finally _w_ to writing the changes. I then formatted the partition to FAT32.
-bq. 
-<pre>sudo mkfs.vfat -F 32 /dev/sdb1</pre>
+
+pre. sudo mkfs.vfat -F 32 /dev/sdb1
 
 Now my Noname 512 MB pendrive works with the Memory Plus manager. The following pendrives did not work: 1 GB Kingston DataTraveler, Datel Max Drive 16 MB and 256 MB MyCom MP3 Player.
 
@@ -126,13 +131,11 @@ I also realized that patching crt0.s in PS2SDK and making the necessary changes 
 So instead I made a small Memory Plus ELF loader, which boots of the memory card and then tries to load an ELF correctly, which should work with most, if not all ELFs.
 
 *Download*
-<ul>
-	<li><a href="http://lukasz.dk/files/MPLUS-LOADER.ELF">MPLUS-LOADER.ELF</a></li>
-	<li><a href="http://lukasz.dk/files/mplus-loader-src.zip">mplus-loader-src.zip</a> (source)<a href="http://lukasz.dk/files/mplus-loader-src.zip">
-</a></li>
-	<li><a href="http://lukasz.dk/files/PS2LINK151.ELF">PS2LINK151.ELF</a> (PS2Link 1.51 compiled from Subversion)<a href="http://lukasz.dk/files/PS2LINK151.ELF">
-</a></li>
-</ul>
+
+* "MPLUS-LOADER.ELF":/files/MPLUS-LOADER.ELF
+* "mplus-loader-src.zip":/files/mplus-loader-src.zip (source)
+* "PS2LINK151.ELF":/files/PS2LINK151.ELF" (PS2Link 1.51 compiled from Subversion)
+
 To make it work, rename MPLUS-LOADER.ELF to either RUNME1.ELF or RUNME2.ELF and put in on the Memory Plus card, as described in the Memory Plus instructions.
 
 Then take the ELF you wish to run  (you can test with PS2LINK151.ELF) and rename it EXECUTE1.ELF (if you want to boot it when the Memory Plus card is inserted into memory card port 1, otherwise EXECUTE2.ELF for port 2) and put it either on the Memory Plus card or your USB pendrive.
@@ -141,21 +144,20 @@ Now boot the Memory Plus card in port 1, this will now load the Memory Plus ELF 
 
 *Update 2:*
 
-I've updated the Memory Plus Loader, so now more ELFs should boot. Tested with uLaunchELF v4.12 and SMS 2.8 (Rev. 1). Also I've added a seperate Memory Plus Loader ELF which patches the Memory Plus manager to NTSC mode before starting it. To make it work you just need to add RUNME1.ELF (or RUNME2.ELF) and not have EXECUTE1.ELF (or EXECUTE2.ELF) present, then the Memory Plus manager will be booted in NTSC mode.
+I've updated the Memory Plus Loader, so now more ELFs should boot. Tested with uLaunchELF v4.12 and SMS 2.8 (Rev. 1). Also I've added a separate Memory Plus Loader ELF which patches the Memory Plus manager to NTSC mode before starting it. To make it work you just need to add RUNME1.ELF (or RUNME2.ELF) and not have EXECUTE1.ELF (or EXECUTE2.ELF) present, then the Memory Plus manager will be booted in NTSC mode.
 
 *Download*
-<ul>
-	<li><a href="http://lukasz.dk/files/MPLUS-LOADER2.ELF">MPLUS-LOADER2.ELF</a></li>
-	<li><a href="http://lukasz.dk/files/MPLUS-LOADER2-NTSC.ELF">MPLUS-LOADER2-NTSC.ELF</a></li>
-	<li><a href="http://lukasz.dk/files/mplus-loader2-src.zip">mplus-loader2-src.zip</a></li>
-</ul>
+
+* "MPLUS-LOADER2.ELF":/files/MPLUS-LOADER2.ELF
+* "MPLUS-LOADER2-NTSC.ELF":/files/MPLUS-LOADER2-NTSC.ELF
+* "mplus-loader2-src.zip":/files/mplus-loader2-src.zip
+
 *Update 3:*
 
-The Memory Plus Loader has been updated to stop the CD/DVD drive for spinning. It's now also possible to initialize the CD/DVD drive. The solution was found by <a href="http://www.psx-scene.com/forums/freevast/57899-free-vast-continues-32.html">ffgriever </a>for the <a href="http://www.psx-scene.com/forums/freevast/">Free McBoot/FreeVast project</a>. There are some people reporting that this does not work with all consoles, however it works with my PAL console :-)
+The Memory Plus Loader has been updated to stop the CD/DVD drive for spinning. It's now also possible to initialize the CD/DVD drive. The solution was found by "ffgriever":http://www.psx-scene.com/forums/freevast/57899-free-vast-continues-32.html for the "Free McBoot/FreeVast project":http://www.psx-scene.com/forums/freevast/. There are some people reporting that this does not work with all consoles, however it works with my PAL console.
 
 *Download*
-<ul>
-	<li><a href="http://lukasz.dk/files/MPLUS-LOADER3.ELF">MPLUS-LOADER3.ELF</a></li>
-	<li><a href="http://lukasz.dk/files/MPLUS-LOADER3-NTSC.ELF">MPLUS-LOADER3-NTSC.ELF</a></li>
-	<li><a href="http://lukasz.dk/files/mplus-loader3-src.zip">mplus-loader3-src.zip</a></li>
-</ul>
+
+* "MPLUS-LOADER3.ELF":/files/MPLUS-LOADER3.ELF
+* "MPLUS-LOADER3-NTSC.ELF":/files/MPLUS-LOADER3-NTSC.ELF
+* "mplus-loader3-src.zip":/files/mplus-loader3-src.zip
