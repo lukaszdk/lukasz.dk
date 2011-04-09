@@ -169,7 +169,7 @@ ul.posts a
 img 
 {
     display: block; 
-    margin-left: auto;   
+    margin-left: auto;
     margin-right: auto;
 }
 
@@ -223,6 +223,20 @@ img
 {
 	margin-top: 1em; 
 	font-size: 20px;
+}
+
+#post table
+{
+	width: 100%;
+}
+
+
+#post td, th
+{
+	padding: 5px;
+	background-color: #eef;
+	font-size: 85%;
+	text-align: center;
 }
 
 #related {
