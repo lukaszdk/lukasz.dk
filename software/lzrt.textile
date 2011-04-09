@@ -1,0 +1,42 @@
+---
+layout: post
+title: lzrt
+---
+
+h1. Lukasz' Ray Tracer
+
+lzrt is a product of my master thesis in computer science entitled "Ray Tracing on the IBM Cell Processor". The focus in my thesis was on the geometric aspect of ray tracing, optimizing the search for the nearest triangle a ray hits. This is achieved by using a kd-tree as an acceleration structure. lzrt supports animation by rebuilding the kd-tree for every new frame. On the graphics side lzrt is very basic with only Phong shading support, a very basic Lightwave Object (LWO) loader, only supporting one ray pr. pixel and no texture support. lzrt does however support shadow and reflection rays, and also multicore processors. Performance on x86 is quite good, however it is poor on the Cell, considering the potential, please read the "lzrt Performance":/files/lzrt-performance.pdf document for more details. 
+
+From a technical view lzrt is multiplatform ray tracing application in C and C++, tested on x86 Ubunu 7.10/8.10, PowerPC 7.10/8.10 and the Cell (PS3) Ubuntu 7.10/8.10 (using the SPUs). Alot of the functions and algorithms have been optimized for Single Instruction Multiple Data (SIMD) on both the PowerPC and the SPUs. The input scenes lzrt are defined and animated using a "Lua":http://www.lua.org/ script. 
+
+In order to compile lzrt you need to have the Cell SDK 3.x (3.0 and 3.1 tested) installed on your x86 workstation and then cross compile it for the Cell. To test it, you have to transfer it to your PS3. During development of lzrt I used _scp_ and _ssh_ to transfer and test, and remote desktop to view the graphical output. The source code for lzrt contains a lot of SPU code and may be useful as a reference for others writing a Cell application.
+
+h2. Downloads
+
+*  "Source code":http://github.com/lukaszbruun/lzrt at GitHub
+*  "x86 Linux binary":/files/lzrt-x86-bin.tar.gz 
+*  "Cell (PS3) Linux binary":/files/lzrt-cell-bin.tar.gz 
+*  "PowerPC headers and libraries for cross compiling":/files/lzrt-powerpc-libs-headers.tar.gz 
+*  "Test scenes":/files/lzrt-scenes.tar.gz 
+*  "Manual (PDF)":/files/lzrt-manual.pdf 
+*  "lzrt Performance (PDF)":/files/lzrt-performance.pdf 
+
+h2. References
+
+*  "Heuristic Ray Shooting Algorithms":/files/dissvh.pdf 
+Ph.D. thesis by Vlastimil Havran (2001)
+*  "Highly Parallel Fast KD-tree Construction":/files/Intel-EG07.pdf 
+Maxim Shevtsov, Alexei Soupikov and Alexander Kapustin (2007)
+*  "Multi-Level Ray Tracing Algorithm":/files/mlrta.pdf
+Alexander Reshetov, Alexei Soupikov and Jim Hurley (2005)
+*  "Physically Based Rendering from Theory to Implementation":http://www.pbrt.org/
+Matt Pharr and Greg Humphreys (2004)
+
+h2. Screenshots
+
+<div class="shadow">!/images/ss01-cell1.png!</div>
+<div class="shadow">!/images/ss01-x863.png!</div>
+<div class="shadow">!/images/ss02-x86.png!</div>
+<div class="shadow">!/images/ss03-x86.png!</div>
+<div class="shadow">!/images/ss04-x86.png!</div>
+

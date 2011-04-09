@@ -130,6 +130,7 @@ ul.posts a
   }
 
   .site .footer {
+	clear: both;
     font-size: 80%;
     color: #666;
     border-top: 4px solid #eee;
@@ -222,9 +223,12 @@ img
 
 #post h2
 {
-	margin-top: 1em; 
+	color: #DB1750;
 	font-size: 20px;
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
+
 
 #post table
 {

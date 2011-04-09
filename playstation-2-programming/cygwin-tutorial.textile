@@ -33,7 +33,7 @@ Download and install them with setup.exe. In case Cygwin complains about other m
 
 h2. Building the toolchains
 
-Now what you need is famous toolchain script from Dan Peori (ooPo), it is available from the Subversion repository. Subversion is a source control tool which allows many people to work on the same source code. ps2dev.org runs a Subversion (SVN) server. "http://svn.ps2dev.org":http://svn.ps2dev.org Log into Cygwin and get the toolchain script by checking it out from svn with the command listed below. 
+What you need now is the famous toolchain script from Dan Peori (ooPo), it is available from the Subversion repository. Subversion is a source control tool which allows many people to work on the same source code. ps2dev.org runs a Subversion (SVN) server. "http://svn.ps2dev.org":http://svn.ps2dev.org Log into Cygwin and get the toolchain script by checking it out from svn with the command listed below. 
 
 *Note:* Its best to avoid building sources in paths with spaces, for instance /home/Lukasz Bruun/, before doing the checkout use the command _pwd_ to see if you are in a directory with spaces, if thats the case checkout the files in another directory. 
 

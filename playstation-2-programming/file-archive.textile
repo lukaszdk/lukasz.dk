@@ -4,3 +4,92 @@ title: PS2DEV File Archive
 ---
 
 h1. PS2DEV File Archive
+
+h2. Documents
+
+"Procedural Rendering on PlayStation 2":http://lukasz.dk/files/rgreen_procedural_renderinggdc2001.pdf
+Written by Robin Green, R&D Programmer, SCEA. The title is a bit misleading, because this paper is mostly about VU1 programming.
+
+"PlayStation 2 Clipping":/files/final-gdc2002-clippingps2.pdf 
+Presentation by Colin Hughes, SCEE.
+
+"DOT3 Normal Mapping on the PS2":/files/ps2_normalmapping.pdf
+Written by Morten Mikkelsen / IO Interactive.
+
+"PS2 Programming Optimisations":/files/PS2Optimisations.pdf
+Slides by George Bain from SCEE
+
+"Using the Z-buffer for special effects":/files/SpecialEffects.pdf
+From SCEE Research And Development
+
+"Texture and geometry syncing":/files/TextureGeometrySyncing.pdf
+From SCEE Research And Development
+
+"The Making of Shadow of the Collosus":/files/making_of_sotc.pdf
+Not a very technical document, but gives some insight into the techniques used for this game.
+
+"How to draw pixel perfect sprites on the PS2":/files/gs-perfect-sprite.pdf
+Tutorial by "jbit":http://www.jbit.net (James Lee).
+
+"TX79 Core Architecture":/files/tx79architecture.pdf 
+Manual for TX79, which is the same processor as the main CPU in the PS2, MIPS R5900 (Emotion Engine).
+
+"VU Instruction Manual":/files/vu-instruction-manual.pdf 
+VU Manual by Bigboss. I made some additions/changes and converted it to PDF.
+
+
+h2. Links
+
+"PS2DEV: PS2 Programming":http://www.ps2dev.org
+Also check out  and the "Subversion repository":http://svn.ps2dev.org. Many of the Subversion repositories are now also on "GitHub":https://github.com/ps2dev.
+
+"PS2DEV forums":http://forums.ps2dev.org
+Local "website mirror":/mirror/forums.ps2dev.org from 31th of August 2010.
+
+"PlayStation 2 Linux Community":http://www.playstation2-linux.com
+-A support site for the PlayStation 2 Linux kit. Has a lot of programming projects and helpful information in the forums. I recommend checking out the "SPS2":http://playstation2-linux.com/projects/sps2 project and digging through the forums for technical details posted by 'sparky' (Morten Mikkelsen).-
+The site has been shut down.
+
+"Dr HS Fortuna Playstation 2 Linux Games Programming":http://www.hsfortuna.pwp.blueyonder.co.uk/ 
+Even though this site is about PlayStation 2 Linux programming, it contains a lot information on the vector unit 1 and 3D graphics. Local "website mirror":/mirror/hsfortuna/ from 15th of January 2009.
+
+"CDVDMANIA":http://www.cdvdmania.com.ru
+CDVDMANIA is a private non-profit site dedicated to programming and reverse engineering for PlayStation 2 console and to in-depth technical information on its hardware components. Local "website mirror":/mirror/cdvdmania from 7th of July 2010.
+
+h2. Source code and low level information
+
+*PS2DEV: Bios Details for Developers*
+
+Reversed engineered IOP modules and other files from [RO]man's website "PS2DEV: Bios Details for Developers".
+
+* "modules.zip":http://lukasz.dk/files/modules.zip
+* "modules2.zip":http://lukasz.dk/files/modules2.zip
+* "modules03.zip":http://lukasz.dk/files/modules03.zip
+* "modules04.zip":http://lukasz.dk/files/modules04.zip
+* "modules05.zip":http://lukasz.dk/files/modules05.zip
+* "modules06.zip":http://lukasz.dk/files/modules06.zip
+* "modules07.zip":http://lukasz.dk/files/modules07.zip
+* "modules08.zip":http://lukasz.dk/files/modules08.zip
+* "padspecs.txt":http://lukasz.dk/files/padspecs.txt
+* "unpack.zip":http://lukasz.dk/files/unpack.zip
+
+*Sps2demo - binary and source repository dump*
+
+Sps2demo files from "http://playstation2-linux.com/projects/sps2demo/":http://playstation2-linux.com/projects/sps2demo/, released by sparky and exoticorn. Source code only compatible with PS2Linux. However there is some general PS2 code which could be used in PS2DEV if ported, such as the RGBA Indexer for post effects (blur, crashzoom, depth of field, fade to grey, glare), texture swizzling, DMA chain disassembler, GS VNC (remote desktop) and more.
+
+* Source: "sp2demo.zip":http://lukasz.dk/files/sps2demo/sps2demo.zip 
+* Binary: "pack.zip":http://lukasz.dk/files/sps2demo/pack.zip 
+* Doc: "installation_and_what_s_good.txt":http://lukasz.dk/files/sps2demo/installation_and_what_s_good.txt
+
+
+h2. Misc
+
+"Oddments Demo":/files/PS2Dev_Oddment_ISO_PALOnly.rar (38.4 MB)
+
+<div class="shadow">!/images/oddment1.jpg!</div>
+
+"Breakpoint 2004":http://breakpoint.untergrund.net/2004/ demo by adresd, emoon, jar, raizor and TyRaNiD. Music by Trinodia.
+
+
+
+
