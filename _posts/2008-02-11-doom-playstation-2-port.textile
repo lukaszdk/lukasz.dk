@@ -1,0 +1,50 @@
+---
+layout: post
+title: Doom - PlayStation 2 Port
+---
+
+h1. {{ page.title }} 
+
+p(meta). 2008-02-11
+
+**Update 28/2/09:**
+
+"Cosmito":http://forums.ps2dev.org/profile.php?mode=viewprofile&u=8970 has been doing a lot of addition work on my quick PS2 port of doom lately, "recently adding sound support":http://ps2homebrewing.wordpress.com/2009/02/24/ps2doom-with-proper-sound-at-last/. To keep updated on the latest PS2Doom changes, check Cosmitos "website":http://ps2homebrewing.wordpress.com/.
+
+**Original post:**
+
+"Doom by id Software":http://en.wikipedia.org/wiki/Doom_%28video_game%29 appears to available for every platform known to man, except for the PlayStation 2. So I wondered how long it would take to port it over to PS2 and the answer to that question turned out to be less than 3 hours. Using the PS2 port of SDL, gsKit (SDL requires it for video) and PS2SDK, all available from "PS2dev.org Subversion repository":http://svn.ps2dev.org and a SDL port of Doom "available here":http://www.libsdl.org/projects/doom/, I managed to get a very basic (read: hackish) port of Doom running on the PS2 without much effort.
+
+<div class="shadow">!/images/ps2doom1.jpg!</div>
+
+<div class="shadow">!/images/ps2doom2.jpg!</div>
+
+I've only tested the port over PS2Link and it will most likely not run from a CD-R. There is no sound, however there is support for sound in PS2 SDL, but does not appear to work with Doom and I have not investigated the cause. Saving and loading of games works, as they just save to host/PC. The DualShock controls are as follow (USB keyboard and mouse are untested)
+
+pre. Left Analog Stick : Move
+Cross             : Enter
+Square/R1         : CTRL / Fire
+Circle/R2         : Space / Open doors
+Triangle          : Escape
+L1                : x
+L2                : y
+L1 and L2 are for entering savegame names
+
+I will not continue to work on this port, it was just a quick nostalgic proof of concept port.
+
+*Download:* 
+
+* "ps2doom-src.zip":/files/ps2doom-src.zip
+* "ps2doom-bin.zip":files/ps2doom-bin.zip - Binary includes shareware data.
+
+*Update:* 
+
+Follow "this thread":http://forums.ps2dev.org/viewtopic.php?t=9798 for further work on this port.
+
+*Update 2:* 
+
+A "PS2 port":http://firehead.org/~jessh/lsdldoom/  by "Jason Yu":http://www.jasonyu.net/ with sound effect support has "surfaced":http://forums.ps2dev.org/viewtopic.php?p=66358#66358. I've compiled the source into a single ELF with the DOOM shareware data included, which should run from CD-ROM, USB, etc (not tested). Included in the archive is also a "ps2-packer":http://ps2dev.org/ps2/Tools/Packers/Unpackers/PS2-Packer_0.4.4 compressed version of DOOM.ELF named DOOMP.ELF.
+
+*Download:* 
+
+* "lsdldoom-ps2-bin.zip":/lsdldoom-ps2-bin.zip

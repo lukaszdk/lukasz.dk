@@ -7,10 +7,11 @@ h1. {{ page.title }}
 
 p(meta). 2009-01-25
 
-After a clean install of Ubuntu 8.10 my OEM TV tuner card called LR6611 (came with a AOpen XC Cube EA 65-II) was no longer working and I had forgotten how I made it work years ago. The cx88xx video4linux driver is correctly loaded, but the card is not detected.  S-video and video works in <a href="http://tvtime.sourceforge.net/">tvtime</a> out of the box, but the quality is poor.
+After a clean install of Ubuntu 8.10 my OEM TV tuner card called LR6611 (came with a AOpen XC Cube EA 65-II) was no longer working and I had forgotten how I made it work years ago. The cx88xx video4linux driver is correctly loaded, but the card is not detected.  S-video and video works in "tvtime":http://tvtime.sourceforge.net/ out of the box, but the quality is poor.
 
 Below is the output from* lspci -vnn*
-bq. 01:06.0 Multimedia video controller [0400]: Conexant Systems, Inc.
+
+pre. 01:06.0 Multimedia video controller [0400]: Conexant Systems, Inc.
 CX23880/1/2/3 PCI Video and Audio Decoder [14f1:8800] (rev 05)
 Subsystem: AOPEN Inc. Device [a0a0:6f05]
 Flags: bus master, medium devsel, latency 32, IRQ 17
@@ -18,17 +19,22 @@ Memory at e3000000 (32-bit, non-prefetchable) [size=16M]
 Capabilities: <access denied>
 Kernel driver in use: cx8800
 Kernel modules: cx8800
-After some searching I found some information on this card on the  <a href="http://www.spinics.net/lists/vfl/msg24737.html">video4linux-list</a>. Turns out that this card is a Leadtek Winfast 2000XP Expert OEM variant, which you can also conclude from searching for <a href="http://www.google.com/search?&q=LR6611">'LR6611' in Google</a>.
+
+After some searching I found some information on this card on the "video4linux-list":http://www.spinics.net/lists/vfl/msg24737.html. Turns out that this card is a Leadtek Winfast 2000XP Expert OEM variant, which you can also conclude from searching for "LR6611":http://www.google.com/search?&q=LR6611 in Google</a>.
 
 I used the information from the video4linux-list to configure the card by the following line to */etc/modprobe.d/options*
-bq. options cx88xx i2c_scan=1 card=5 tuner=38
+
+pre. options cx88xx i2c_scan=1 card=5 tuner=38
+
 Now the card will be correctly configured when booting Ubuntu. You can also test the card without rebooting, by entering the following commands in a shell.
-bq. sudo rmmod cx8800
+
+pre. sudo rmmod cx8800
 sudo rmmod cx88xx
 sudo modprobe cx88xx
 sudo modprobe cx8800
-You can watch TV channels in tvtime now. When scanning for channels, do not worry about the "no signal" message, the scanner will eventually find the available channels.
-<p style="text-align: center;"><img class="size-full wp-image-253 aligncenter" title="tvtime" src="http://lukasz.dk/files/tvtime.png" alt="tvtime" width="458" height="365" />
 
+You can watch TV channels in tvtime now. When scanning for channels, do not worry about the "no signal" message, the scanner will eventually find the available channels.
+
+!/images/tvtime.png!
 
 S-video and video input quality has also greatly improved compared to the default cx88xx settings for this card.

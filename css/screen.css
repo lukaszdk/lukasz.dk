@@ -179,6 +179,7 @@ img
   #post pre {
     border: 1px solid #ddd;
     background-color: #eef;
+	font-size: 85%;
     padding: 0 .4em;
   }
 
