@@ -1,0 +1,146 @@
+---
+layout: post
+title: Building PS2 Toolchains and PS2SDK in Cygwin
+---
+
+
+h1. Building PS2 Toolchains and PS2SDK in Cygwin
+
+*Important notice - July 2007* 
+The PS2 toolchains do currently not build in Cygwin (see "this thread":http://forums.ps2dev.org/viewtopic.php?t=4909 ). As alternative you can try to build them in "MinGW":http://www.mingw.org by following "this tutorial":/playstation-2-programming/mingw-tutorial/. 
+
+h2. Getting Cygwin
+
+First of all you need to install "Cygwin.":http://www.cygwin.com Cygwin is a collection of unix tools ported to Windows, which enables you to do tasks which would normally only be possible in a unix enviroment. You need Cygwin in order to compile the PS2 ports of GCC (GNU C Compiler) aswell as other PS2 projects. 
+
+Another reason to get Cygwin is if you create a project which compiles under Cygwin using makefiles and other unix tools, its very likely that this project will also compile on other systems such as Linux, MacOS, etc. This is the beauty of Cygwin, you get the same development enviroment as every one else. If you think about it for a minute, you will realize that if you want to be part of a community and contribute it would be quite pointless to use a different enviroment than everyone else. Not to mention the amount of hack-work you will avoid (eg. creating .BAT files instead of makefiles, etc.). 
+
+Some claim the Cygwin is bloated and they prefer "MinGW":http://www.mingw.org/ , which is a lightweight variant of Cygwin. But the problem with MinGW is that it is not as mature as Cygwin and therefor problems do (and will) occour. Therefor I prefer Cygwin. 
+
+Cygwin has a very easy to use interface for installing, namely setup.exe. "Download setup.exe":http://www.cygwin.com/setup.exe select a mirror and the packages you want to install and it will download and install them for you. 
+
+*Note about setup.exe:* setup.exe keeps downloaded files from different mirrors in different folders, which means that it will download everything you already have downloaded and installed again if you hange mirrors, so don't :) For compiling the PS2 toolchain, you need the following packages besides from the preselected packages.
+
+* diffutils
+* gcc
+* make
+* patch
+* perl
+* svn
+* wget
+
+Download and install them with setup.exe. In case Cygwin complains about other missing programs, just use setup.exe to download and install them.
+
+h2. Building the toolchains
+
+Now what you need is famous toolchain script from Dan Peori (ooPo), it is available from the Subversion repository. Subversion is a source control tool which allows many people to work on the same source code. ps2dev.org runs a Subversion (SVN) server. "http://svn.ps2dev.org":http://svn.ps2dev.org Log into Cygwin and get the toolchain script by checking it out from svn with the command listed below. 
+
+*Note:* Its best to avoid building sources in paths with spaces, for instance /home/Lukasz Bruun/, before doing the checkout use the command _pwd_ to see if you are in a directory with spaces, if thats the case checkout the files in another directory. 
+
+{% highlight sh %}
+svn checkout svn://svn.ps2dev.org/ps2/trunk/ps2toolchain
+{% endhighlight %}
+
+It will now download the files from svn. If you need to the path for other ps2dev projects. Use svn.ps2dev.org in your browser to get a listing of projects and their paths. 
+
+Now enter the ps2toolchain directory and type *ls* . You will see a bunch of files, the interesting one is the toolchain.sh. Its a shell script which executes all the commands needed for downloading/building the toolchain sources, so we can just lay back and relax. First you need to make the script executable, by typing 
+
+{% highlight sh %}
+chmod a+x ./toolchain.sh
+{% endhighlight %}
+
+And then type the following to execute the script. 
+
+{% highlight sh %}
+./toolchain.sh
+{% endhighlight %}
+
+Now you just have to wait until it downloads and builds everything for you.h2. What you get
+
+While you are waiting for everything to build, I will briefly explain what is being installed. Everything is being installed into _/usr/local/ps2dev_ . What you get is
+
+*  _EE C/C++ compiler toolchain and newlib_ (/usr/local/ps2dev/ee/)
+*  _IOP C compiler toolchain_ (/usr/local/ps2dev/iop/)
+*  _VU assembler toolchain_ (/usr/local/ps2dev/dvp/)
+*  _PS2SDK_ (/usr/local/ps2dev/ps2sdk/)
+*  _PS2CLIENT_ (/usr/local/ps2dev/bin/)
+
+*Setting Up Enviroment Variables* 
+
+In order to be able invoke these tools and to link with ps2sdk, you need to setup a few enviroment variables in Cygwin. Open the file _/etc/bash.bashrc_  and add the following lines to the bottom of the file.
+
+{% highlight sh %}
+## PS2DEV SETTINGS
+export PS2DEV=”/usr/local/ps2dev”
+export PS2SDK=”$PS2DEV/ps2sdk”
+export PATH=”$PATH:$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin”
+export PATH=”$PATH:$PS2DEV/dvp/bin:$PS2SDK/bin”
+{% endhighlight %}
+
+
+The next time you log into Cygwin, the enviroment variables will be automatically set.
+
+h2. Updating PS2SDK in the future
+
+PS2SDK changes are made frequently, binary release less frequently. Therefor its best always just to update and build a fresh version of PS2SDK every now and then. You can do this from the toolchain.sh script by calling it with the -p flag. 
+
+{% highlight sh %}
+./toolchain.sh -p
+{% endhighlight %}
+
+
+This will download and build the latest version of PS2SDK for you.
+
+h2. Cygwin Tips
+
+*Building Windows Executables Which Do Not Rely On Cygwin1.dll* 
+
+You might eventually code some tools which can be used with your projects which build with gcc (not ee-gcc) and once you compiled these, you will realize that if you try to run them outside of cygwin, they will require cygwin1.dll. To avoid this use the flag _-mno-cygwin_ when linking your object files to an executable. Its not always possible to do this because many unix functionalities are built into DLL's, however it should be possible for the most part. 
+
+*Using Symbolic Links* 
+
+Most people install Cygwin into C:\Cygwin and many of these people reinstall Windows frequently and if they are sane they have a different drive for storing all their vital files, like for instance a D drive. Some might say that the ps2dev toolchains and tools are a part of the vital data and they would therefor like to have these tools on their backup drive. There is a very easy way to do this, by creating a symbol link. 
+
+What you do is first you move the entire /usr/local/ps2dev/ folder over to your backup drive, for instance D:/p2dev. Then change (cd) to /usr/local/ directory in Cygwin and then type 
+
+{% highlight sh %}
+ln -s /cygdrive/d/ps2dev ps2dev
+{% endhighlight %}
+
+This will create a symbolic link from /usr/local/ps2dev/ to D:\ps2dev and everything will work as before, except you now have everything on your backup drive. 
+
+*Using an IDE with cygwin* 
+
+It would be nice to use an IDE together with Cygwin and the ps2dev toolchains and this is possible. The IDE I recommend for Windows is "Crimson Editor":http://www.crimsoneditor.com/ it is freeware and simple to use. 
+
+The problem is that you do not have all the ps2dev enviroment variables setup outside of cygwin nor do you have PATH set your cygwin/bin directory where cygwin1.dll reside. The simplest solution I have come up with which does not require you to setup all the variables as system variables is by using a Batch file. 
+
+What you do is you have a batch file which looks like this 
+
+{% highlight bat %}
+@echo off
+set CYGROOT=C:\Cygwin
+set PS2DEV=%CYGROOT%\usr\local\ps2dev
+set PS2SDK=%PS2DEV%\ps2sdk
+set PATH=%PATH%;%CYGROOT%\bin;%PS2DEV%\bin;
+set PATH=%PATH%;%PS2DEV%\ee\bin;%PS2DEV\iop\bin;
+%1 %2 %3 %4 %5 %6 %7 %8 %9
+{% endhighlight %}
+
+Of course you need to alter CYGROOT in case you don't have Cygwin installed in C:\Cygwin. I called mine exec.bat and stored it in D:\ps2dev\. What you do in Crimson Editor (or any other editor which supports this) is that you setup a User Tool and enter the following values.
+
+* Set Menu Text :
+* Set Command to : "D:\ps2dev\exec.bat"
+* Set Argument to :
+* Set Inital Dir to :<: the directory of your project>
+* Select "Capture Output"
+
+To illustrate this better I will give an example I use, my setup for building libito.
+
+* Menu Text: "Build libito"
+* Command: "D:\ps2dev\exec.bat"
+* Argument: "make"
+* Inital Dir: "D:\ps2dev\libito"
+* Selected "Capture Output"
+
+Now you can easily build your projects by invoking the User Tool inside the IDE.

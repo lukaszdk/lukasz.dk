@@ -1,0 +1,47 @@
+---
+layout: post
+title: Using the PS2Link exception screen
+---
+
+h1. Introduction
+
+This tutorial will explain how you use the PS2Link exception to find bugs in your programs even if you dont understand assembly.
+
+h2. Ps2dis
+
+The tool need besides from your bugfilled program which causes the PS2Link exception screen to appear and PS2link itself of course, is ps2dis. Ps2dis is a PS2 ELF Disassembler for Windows by Hanimar, it is discontiuned but still very useful. "Download here":/files/ps2dis099_23.zip (If any one has a more recent version, please email it to me :-)
+
+You can of course also just use ee-objdump -D , if you dont run Windows.
+
+h2. Using ps2dis
+
+First of all you will need your bugged program, to illustrate this I've written a very small program which reads from address 0 which causes an exception.
+
+{% highlight c linenos %}
+#include <tamptypes.h>
+#include <stdio.h>
+
+int main() 
+{ 
+	u32* ptr = 0; 
+	u32 val;
+	
+	val = *ptr;
+	
+	printf("Not getting here... %i\n", val);
+	
+	return 0; 
+}
+{% endhighlight %}
+
+Now I run this on my PS2 via PS2Link using ps2client and redirecting the execption screen to the console and I get this:
+
+!/images/exception1.png!
+
+The interesting part of the exception screen is in the red square, its the *Exception Program Counter (EPC)*. A program counter is nothing more than the address the processor is current executing code at and the Exception Program Counter is the address the exception accoured. Now I open the ELF with ps2dis and select *Edit ->; Jump To Address* and enter the EPC, which in my case is *00100278* and hit enter. I get this screen below if I scroll up a little.
+
+<div class="shadow">!/images/ps2dis1.png!</div>
+
+The address was 00100278 and at this address there is a JAL (Jump And Link) instruction, this is the instruction used to called functions in MIPS and you can see this instruction calls printf. The special thing about this instruction (and other jump/branch instructions) is that the instruction right after it (called the Delay Slot) is actually executed before the jump itself. If we look at the instruction right after it, there is a lw (Load Word) instruction, and this one loads from 0. So we found our bug, but where is it located within the source? If you have not stripped your ELF for symbols, you can now scroll up a little until you see a symbol on the left (most likely a function name) you recognize and in my case *main*, so the bug happen somewhere inside the main() function.
+
+If you understand assembly you can the track down the problem to the instruction itself, but this is tiresome and requires quite a lot of experience reading assembly since not everything is as straight forward as this example. So just scroll up until you find the function where the problem is located and debug from there, instead of filling your entire source with debug code.

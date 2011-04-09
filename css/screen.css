@@ -179,8 +179,9 @@ img
   #post pre {
     border: 1px solid #ddd;
     background-color: #eef;
-	font-size: 85%;
+	font-size: 1em;
     padding: 0 .4em;
+	line-height: 1.1em;
   }
 
   #post ul,
@@ -259,6 +260,11 @@ h1
 	color: #2382c8;
 	display: inline;
 	font-size: 25px;
+}
+
+p
+{
+	clear:both;
 }
 
 .shadow

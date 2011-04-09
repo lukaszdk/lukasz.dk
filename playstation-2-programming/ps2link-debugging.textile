@@ -1,0 +1,59 @@
+---
+layout: post
+title: PS2Link Debugging
+---
+
+h1. PS2Link Debugging
+
+This tutorial is similar to the one I wrote about "using the PS2Link exception screen":/playstation-2-programming/using-the-ps2link-exception-screen/ for debugging. But instead of using ps2dis by Hanimar to find where the exception occurred, we use _ee-addr2line_, a tool which comes with GNU binutils, and which converts an address to a line number within a source file, hence the name of the tool. Like in the other tutorial, first I create a source file which tries to print the value at memory address 0 (zero).
+
+{% highlight c linenos %}
+#include <stdio.h>
+
+int main() 
+{ 
+	u32* ptr = 0;
+
+	printf("Value: %i\n", *ptr); 
+	return 0; 
+}
+{% endhighlight %}
+
+
+This source is compiled with PS2SDK, so I create this makefile for it (see below). The thing to notice here is that I've added a flag '-g' to CFLAGS. This tells GCC to generate debug information, which is required if we want to use ee-addr2line.bq. 
+
+{% highlight makefile %}
+EE_CFLAGS = -g 
+EE_BIN = main.elf 
+EE_OBJS = main.o 
+
+all: $(EE_BIN) 
+
+clean: 
+	rm -f *.elf *.o *.a 
+	
+include $(PS2SDK)/samples/Makefile.pref 
+include $(PS2SDK)/samples/Makefile.eeglobal
+{% endhighlight %}
+
+I use ps2client to send the ELF I've built, but first I type _ps2client netdump_, so that the exception gets sent to standard out on my pc. When I run this program ( _ps2client execee host:main.elf_ ), I get the following exception.
+
+<pre>
+...
+           EE Exception handler: TLB load/inst fetch exception
+
+   Cause d0008008  BadVAddr 00000000  Status 70030c13  EPC 00100278
+
+zero: 00000000000000000000000000000000   t8: 00...
+  at: 0000000000000000FFFFFFFF80020000   t9: 00...
+...
+</pre>
+
+I'm interested in the _Exception Program Counter (EPC)_, which tells me where the exception happened. In this case the exception happened at address 0x00100278. I now use ee-addr2line to tell me in which source file the problem is.
+
+{% highlight sh %}
+lukasz@zen:~/ps2dev/projects/exception$ ee-addr2line -e main.elf 100278
+/home/lukasz/ps2dev/projects/exception/main.c:7
+{% endhighlight %}
+
+ee-addr2line tells me the exception occurred on line 7 in main.c and I can now start bug-fixing.

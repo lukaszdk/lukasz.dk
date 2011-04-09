@@ -1,0 +1,76 @@
+---
+layout: post
+title: Building PS2 Toolchains and PS2SDK in MingW
+---
+
+h1. Building PS2 Toolchains and PS2SDK in MingW
+
+h2. Introduction
+
+There has been some trouble with building the PS2 toolchains in "Cygwin":http://www.cygwin.com and therefor I tried to build the PS2 toolchains in "MinGW":http://www.mingw.org instead, which can be considered to be a lightweight version af Cygwin. This tutorial will cover how to build the toolchains and also offer binaries of the toolchain for MinGW.h2. Installing MinGW
+
+*Windows Vista* 
+
+If you are trying to build the toolchains under Windows Vista, then the process is a little different. Please read the instructions for building in Windows Vista in "this post":http://forums.ps2dev.org/viewtopic.php?p=55772#55772 by chp on the PS2Dev forums, before reading the rest of this tutorial. I have mirrored the files required in the Vista instructions by chip here:
+
+* "gcc-vista-3.4.5-20060117-1.tar.gz":/files/gcc-vista-3.4.5-20060117-1.tar.gz 
+*  "msys-1.0.dll-SNAP-1.0.11-2006.04.23.tar.bz2":/files/msys-1.0.dll-SNAP-1.0.11-2006.04.23.tar.bz2 
+
+First of all you need to download the following files
+
+* "MinGW-5.1.3.exe":/files/MinGW-5.1.3.exe 
+* "MSYS-1.0.10.exe":/files/MSYS-1.0.10.exe 
+* "mingw-packages-ps2dev-1.0.zip":/files/mingw-packages-ps2dev-1.0.zip 
+
+The MinGW and MSYS files can also be downloaded from the "MinGW website":http://www.mingw.org . The mingw-packages-ps2dev is a file I have put together to ease the process of building the PS2 toolchains, it contains bison, flex, libiconv and libtool from "GnuWin32":http://gnuwin32.sourceforge.net/ , "Subversion":http://subversion.tigris.org/ , "wget":http://www.gnu.org/software/wget/ and "Pthreads Win32":http://sourceware.org/pthreads-win32/. 
+
+First of all you need to install MinGW and choose to the current package and also choose to install MinGW make. Next install MSYS and choose y (yes) to the post install and follow the instructions. In the directory where you choose to install MSYS, there is a file named rxvt.exe in the bin directory, rename this file something else, like rxvt2.exe. Now extract the contents of the mingw-packages-ps2dev archive into the directory where you installed MinGW, when asked if you wish to overwrite files which already exist, choose no to all. You are now ready to build the PS2 toolchains.
+
+h2. Installing the PS2 toolchains
+
+First thing you need to do is to add the PS2Dev enviroment variables your MSYS login script. This is done by adding the following to etc/profile in the MSYS directory. Use an editor which supports Unix file format like "Crimson Editor":http://www.crimsoneditor.com (Preferences -> File -> Save in Unix format) to edit the file. 
+
+{% highlight sh %}
+export PS2DEV=/usr/local/ps2dev
+export PATH=$PATH:$PS2DEV/bin
+export PATH=$PATH:$PS2DEV/ee/bin
+export PATH=$PATH:$PS2DEV/iop/bin
+export PATH=$PATH:$PS2DEV/dvp/bin
+export PS2SDK=$PS2DEV/ps2sdk
+export PATH=$PATH:$PS2SDK/bin
+{% endhighlight %}
+
+Once you have done this, you are ready to either build the PS2 toolchains yourself or download the ones I have compiled.
+
+h2. Option 1: Build the PS2 toolchains (recommended)
+
+Log into MinGW using MSYS (you should have a shortcut on your desktop). Now export the ps2toolchain scripts by "ooPo":http://www.oopo.net from the "PS2Dev Subversion repository":http://svn.ps2dev.org using the following command in a directory without spaces (you can check this by typing _pwd_ ) 
+
+{% highlight sh %}
+svn export svn://svn.ps2dev.org/ps2/trunk/ps2toolchain
+{% endhighlight %}
+
+Change to the ps2toolchain directory (cd ps2toolchain) and type 
+
+{% highlight sh %}
+sh toolchain.sh
+{% endhighlight %}
+
+This will start the process of building the PS2 toolchains, ps2sdk and ps2client, see the "Cygwin tutorial":http://lukasz.dk/playstation-2-programming/cygwin-tutorial for more details. Once this is done, you need to copy over the pthreadGC2.dll file to the directoy where ps2client is installed (in MSYS, local/ps2dev/bin), you either do this manually or by typing 
+
+{% highlight sh %}
+cp /mingw/lib/pthreadGC2.dll $PS2DEV/bin
+{% endhighlight %}
+
+That is it, you are done. If you run into trouble try "this thread":http://forums.ps2dev.org/viewtopic.php?t=8568 on PS2Dev forums.
+
+h2. Option 2: Download the PS2 toolchains
+
+If you wish to just download the PS2 toolchains for MinGW, first create the directory _local/ps2dev_ in the directory where you can MSYS have installed (where the bin, doc, etc. are) and download the following files and extract them into the local/ps2dev directory. 
+
+*Windows XP - Built July 28th 2007* 
+
+* "ee-toolchain-mingw-28072007.zip":http://www.lukasz.dk/files/ee-toolchain-mingw-28072007.zip
+* "iop-toolchain-mingw-28072007.zip":http://www.lukasz.dk/files/iop-toolchain-mingw-28072007.zip
+* "dvp-toolchain-mingw-28072007.zip":http://www.lukasz.dk/files/dvp-toolchain-mingw-28072007.zip
+* "ps2client-mingw-28072007.zip":http://www.lukasz.dk/files/ps2client-mingw-28072007.zip

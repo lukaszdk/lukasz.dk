@@ -1,5 +1,6 @@
 markdown: rdiscount
 permalink: pretty
+pygments: true
 
 domain: lukasz.dk
 title: Lukasz.dk - Personal website of Lukasz Bruun
