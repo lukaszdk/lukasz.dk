@@ -56,7 +56,7 @@ Change to the ps2toolchain directory (cd ps2toolchain) and type
 sh toolchain.sh
 {% endhighlight %}
 
-This will start the process of building the PS2 toolchains, ps2sdk and ps2client, see the "Cygwin tutorial":http://lukasz.dk/playstation-2-programming/cygwin-tutorial for more details. Once this is done, you need to copy over the pthreadGC2.dll file to the directoy where ps2client is installed (in MSYS, local/ps2dev/bin), you either do this manually or by typing 
+This will start the process of building the PS2 toolchains, ps2sdk and ps2client, see the "Cygwin tutorial":/playstation-2-programming/cygwin-tutorial for more details. Once this is done, you need to copy over the pthreadGC2.dll file to the directoy where ps2client is installed (in MSYS, local/ps2dev/bin), you either do this manually or by typing 
 
 {% highlight sh %}
 cp /mingw/lib/pthreadGC2.dll $PS2DEV/bin
@@ -70,7 +70,7 @@ If you wish to just download the PS2 toolchains for MinGW, first create the dire
 
 *Windows XP - Built July 28th 2007* 
 
-* "ee-toolchain-mingw-28072007.zip":http://www.lukasz.dk/files/ee-toolchain-mingw-28072007.zip
-* "iop-toolchain-mingw-28072007.zip":http://www.lukasz.dk/files/iop-toolchain-mingw-28072007.zip
-* "dvp-toolchain-mingw-28072007.zip":http://www.lukasz.dk/files/dvp-toolchain-mingw-28072007.zip
-* "ps2client-mingw-28072007.zip":http://www.lukasz.dk/files/ps2client-mingw-28072007.zip
+* "ee-toolchain-mingw-28072007.zip":/files/ee-toolchain-mingw-28072007.zip
+* "iop-toolchain-mingw-28072007.zip":/files/iop-toolchain-mingw-28072007.zip
+* "dvp-toolchain-mingw-28072007.zip":/files/dvp-toolchain-mingw-28072007.zip
+* "ps2client-mingw-28072007.zip":/files/ps2client-mingw-28072007.zip
