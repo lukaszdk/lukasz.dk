@@ -66,7 +66,7 @@ Reversed engineered IOP modules and other files from [RO]man's website "PS2DEV: 
 * "modules2.zip":/files/modules2.zip
 * "modules03.zip":/files/modules03.zip
 * "modules04.zip":/files/modules04.zip
-* "modules05.zip":files/modules05.zip
+* "modules05.zip":/files/modules05.zip
 * "modules06.zip":/files/modules06.zip
 * "modules07.zip":/files/modules07.zip
 * "modules08.zip":/files/modules08.zip
@@ -77,12 +77,15 @@ Reversed engineered IOP modules and other files from [RO]man's website "PS2DEV: 
 
 Sps2demo files from "http://playstation2-linux.com/projects/sps2demo/":http://playstation2-linux.com/projects/sps2demo/, released by sparky and exoticorn. Source code only compatible with PS2Linux. However there is some general PS2 code which could be used in PS2DEV if ported, such as the RGBA Indexer for post effects (blur, crashzoom, depth of field, fade to grey, glare), texture swizzling, DMA chain disassembler, GS VNC (remote desktop) and more.
 
-* Source: "sp2demo.zip":/files/sps2demo/sps2demo.zip 
-* Binary: "pack.zip":/files/sps2demo/pack.zip 
-* Doc: "installation_and_what_s_good.txt":/files/sps2demo/installation_and_what_s_good.txt
+* Source: "sp2demo.zip":/files/sps2demo.zip 
+* Binary: "pack.zip":/files/pack.zip 
+* Doc: "installation_and_what_s_good.txt":/files/installation_and_what_s_good.txt
 
 
 h2. Misc
+
+"ps2dis Ver.0902090408":/files/ps2dis099_23.zip
+A great PS2 disassembler by Hanimar. "Website":http://reocities.com/siliconvalley/station/8269/ps2dis/ with more information.
 
 "Oddments Demo":/files/PS2Dev_Oddment_ISO_PALOnly.rar (38.4 MB)
 
