@@ -94,7 +94,7 @@ I copied PS2LINK.ELF using the following fsclient command
 
 pre. fsclient copyto PS2LINK.ELF "mc0:BESLES-00000 MP/RUNME1.ELF"
 
-I rebooted my PS2 with the memory card inserted into the first slot and waited more than 25 seconds and nothing happened. I then tried something a bit simpler than PS2Link, my very own simple "Torus demo":/ps2dev/ttc/demos/round26/torus-lkz.zip from "The Third Creation":/playstation-2-programming/the-third-creation/ and it booted just fine.
+I rebooted my PS2 with the memory card inserted into the first slot and waited more than 25 seconds and nothing happened. I then tried something a bit simpler than PS2Link, my very own simple "Torus demo":/files/ttc-demos/round26/torus-lkz.zip from "The Third Creation":/playstation-2-programming/the-third-creation/ and it booted just fine.
 
 <div class="shadow">!/images/mplus-torus.jpg!</div>
 
