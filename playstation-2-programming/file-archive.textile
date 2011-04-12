@@ -81,8 +81,13 @@ Sps2demo files from "http://playstation2-linux.com/projects/sps2demo/":http://pl
 * Binary: "pack.zip":/files/pack.zip 
 * Doc: "installation_and_what_s_good.txt":/files/installation_and_what_s_good.txt
 
-
 h2. Misc
+
+*VCL - (Vector Unit Command Line)*
+
+* "vcl 1.3.2":/files/vcl.1.3.2.tgz
+* "vcl 1.4 beta 7":/files/vcl.1.4.beta7.x86.tgz
+* "vcl samples":/files/vcl-samples.tgz
 
 "ps2dis Ver.0902090408":/files/ps2dis099_23.zip
 A great PS2 disassembler by Hanimar. "Website":http://reocities.com/siliconvalley/station/8269/ps2dis/ with more information.
