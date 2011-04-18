@@ -11,7 +11,7 @@ One of the performance bottlenecks when rendering polygons using a dedicated GPU
 
 To reduce the number of draw calls for textured polygons, you can put all your individual textures files into one or more big texture files, also known as a _texture atlas_. This way all the polygons that use the same atlas can be batched together and rendered in one draw call.
 
-If you have all your textures as separate files, then creating the atlas by hand can be a quite painstaking experience. Therefor I have made this small, single file, Java application that will recursively load PNG (can easily be modified to support other formats) from a folder and create one or more PNG texture atlases.
+If you have all your textures as separate files, then creating the atlas by hand can be a quite painstaking experience. I have therefor made this small, single file, Java application that will recursively load PNG (can easily be modified to support other formats) from a folder and create one or more PNG texture atlases.
 
 Get it on GitHub : "Texture Atlas Generator":http://github.com/lukaszbruun/texture-atlas-generator
 
@@ -27,7 +27,7 @@ pre. javac AtlasGenerator.java
 
 and executed it
 
-pre. java AtlasGenerator atlas-2048- 2048 2048 abuse-png/
+pre. java AtlasGenerator atlas-2048- 2048 2048 abuse_png/
 
 This generated the atlas PNG texture below. Click the image below to get the full size image.
 
@@ -79,7 +79,7 @@ abuse_png/sect 0 495 540 270
 abuse_png/tdoor 0 1944 245 45
 abuse_png/teleport 1674 0 252 344
 
-If the images cannot fit into one atlas of the specified size, then multiple atlases will be generated. The images below show the 3 atlases generated for the PNGs when setting
+If the images do not fit into one atlas of the specified size, then multiple atlases will be generated. The images below show the 3 atlases generated for the PNGs when setting
 the size of the atlas to 1024x1024.
 
 <div class="shadow">!/images/atlas-1024-1-small.png!:/images/atlas-1024-1.png</div>
