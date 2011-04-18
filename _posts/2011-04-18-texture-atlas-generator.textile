@@ -1,0 +1,93 @@
+---
+layout: post
+title: Texture Atlas Generator
+---
+
+h1. {{ page.title }} 
+
+p(meta). 2011-04-18
+
+One of the performance bottlenecks when rendering polygons using a dedicated GPU is the number of draw calls issued by the application. For textured polygons, you usually bind one texture for each draw call and all the polygons will be textured using this one texture. This means that you will get at least one draw call for every texture used in your application.
+
+To reduce the number of draw calls for textured polygons, you can put all your individual textures files into one or more big texture files, also known as a _texture atlas_. This way all the polygons that use the same atlas can be batched together and rendered in one draw call.
+
+If you have all your textures as separate files, then creating the atlas by hand can be a quite painstaking experience. Therefor I have made this small, single file, Java application that will recursively load PNG (can easily be modified to support other formats) from a folder and create one or more PNG texture atlases.
+
+Get it on GitHub : "Texture Atlas Generator":http://github.com/lukaszbruun/texture-atlas-generator
+
+The texture packing algorithm used in this atlas generator is the "Lightmap Packing Algorithm":http://www.blackpawn.com/texts/lightmaps/ by "Black Pawn":http://www.blackpawn.com. The images are added to the atlas by area size (width x height), in descending order.
+
+I will show how to use the atlas generator by example. 
+
+First I downloaded the abuse_png.zip archive from "OpenGameArt.org":http://opengameart.org/content/abuse-art and extracted the contents into a folder named "abuse_png" next AtlasGenerator.java.
+
+I then compiled the application
+
+pre. javac AtlasGenerator.java 
+
+and executed it
+
+pre. java AtlasGenerator atlas-2048- 2048 2048 abuse-png/
+
+This generated the atlas PNG texture below. Click the image below to get the full size image.
+
+<div class="shadow">!/images/atlas-2048-1-small.png!:/images/atlas-2048-1.png</div>
+
+Along with the atlas image there is also a .txt file generated with coordinates for all the textures within the atlas.
+
+The format for each entry is: 
+
+pre. imagePath x y width height
+
+Here is what the .txt file for the atlas above looks like.
+
+pre. abuse_png/ammo 400 765 108 69
+abuse_png/ant 0 0 780 495
+abuse_png/back_cave 836 867 300 120
+abuse_png/back_city 1308 495 420 150
+abuse_png/back_intro 1674 344 360 150
+abuse_png/back_tech 1359 675 360 150
+abuse_png/blowups 1136 867 301 96
+abuse_png/bold 1505 351 153 86
+abuse_png/cloud 1505 437 68 45
+abuse_png/concus 1573 437 63 34
+abuse_png/cop 780 0 429 462
+abuse_png/coptop 1209 0 465 351
+abuse_png/door 1926 195 72 120
+abuse_png/door_round 330 1386 180 82
+abuse_png/exp1 1719 675 280 192
+abuse_png/flyer 0 1710 296 234
+abuse_png/fonts 0 1556 512 154
+abuse_png/fore_cave 918 495 390 165
+abuse_png/fore_techno 1728 495 300 135
+abuse_png/fore_techno2 540 1084 270 120
+abuse_png/fore_techno3 330 1296 210 90
+abuse_png/fore_techno4 0 1080 420 216
+abuse_png/gun2 540 867 296 217
+abuse_png/jug 540 495 378 180
+abuse_png/lava 330 1468 190 36
+abuse_png/lavap 296 1710 235 132
+abuse_png/lightin 1926 0 114 195
+abuse_png/mine 400 834 112 60
+abuse_png/misc 0 765 400 315
+abuse_png/missle 540 675 351 192
+abuse_png/platform 891 675 468 134
+abuse_png/push 780 462 252 22
+abuse_png/rob1 1209 351 296 141
+abuse_png/rob2 0 1296 330 260
+abuse_png/sect 0 495 540 270
+abuse_png/tdoor 0 1944 245 45
+abuse_png/teleport 1674 0 252 344
+
+If the images cannot fit into one atlas of the specified size, then multiple atlases will be generated. The images below show the 3 atlases generated for the PNGs when setting
+the size of the atlas to 1024x1024.
+
+<div class="shadow">!/images/atlas-1024-1-small.png!:/images/atlas-1024-1.png</div>
+<div class="shadow">!/images/atlas-1024-2-small.png!:/images/atlas-1024-2.png</div>
+<div class="shadow">!/images/atlas-1024-3-small.png!:/images/atlas-1024-3.png</div>
+
+Here are the .txt files for the 3 images above.
+
+* "atlas-1024-1.txt":/files/atlas-1024-1.txt
+* "atlas-1024-2.txt":/files/atlas-1024-2.txt
+* "atlas-1024-3.txt":/files/atlas-1024-3.txt
