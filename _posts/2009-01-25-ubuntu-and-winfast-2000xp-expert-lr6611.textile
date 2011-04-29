@@ -9,7 +9,7 @@ p(meta). 2009-01-25
 
 After a clean install of Ubuntu 8.10 my OEM TV tuner card called LR6611 (came with a AOpen XC Cube EA 65-II) was no longer working and I had forgotten how I made it work years ago. The cx88xx video4linux driver is correctly loaded, but the card is not detected.  S-video and video works in "tvtime":http://tvtime.sourceforge.net/ out of the box, but the quality is poor.
 
-Below is the output from* lspci -vnn*
+Below is the output from *lspci -vnn*
 
 pre. 01:06.0 Multimedia video controller [0400]: Conexant Systems, Inc.
 CX23880/1/2/3 PCI Video and Audio Decoder [14f1:8800] (rev 05)
@@ -28,10 +28,12 @@ pre. options cx88xx i2c_scan=1 card=5 tuner=38
 
 Now the card will be correctly configured when booting Ubuntu. You can also test the card without rebooting, by entering the following commands in a shell.
 
-pre. sudo rmmod cx8800
+{% highlight sh %}
+sudo rmmod cx8800
 sudo rmmod cx88xx
 sudo modprobe cx88xx
 sudo modprobe cx8800
+{% endhighlight %}
 
 You can watch TV channels in tvtime now. When scanning for channels, do not worry about the "no signal" message, the scanner will eventually find the available channels.
 
