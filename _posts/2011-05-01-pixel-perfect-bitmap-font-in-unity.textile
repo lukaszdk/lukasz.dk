@@ -6,7 +6,7 @@ title: Pixel Perfect Bitmap Font in Unity
 
 h1. {{ page.title }} 
 
-p(meta). 2011-05-02
+p(meta). 2011-05-01
 
 I have been playing around with "Sprite Manager":http://forum.unity3d.com/threads/16763 for "Unity":http://unity3d.com, which allows you to draw all your 2D sprites in one draw call. I wanted to be able to draw pixel perfect text using Sprite Manager and since I was unable to find any example of this, I wrote my own implementation.
 
