@@ -1,7 +1,7 @@
 permalink: pretty
 pygments: true
 
-exclude: todo.txt atom.xml files/
+exclude: todo.txt files/
 
 domain: lukasz.dk
 title: Lukasz.dk - Personal website of Lukasz Bruun

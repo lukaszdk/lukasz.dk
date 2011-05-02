@@ -1,0 +1,68 @@
+---
+layout: post
+title: Pixel Perfect Bitmap Font in Unity
+---
+<script language="javascript1.1" type="text/javascript" src="/js/UnityScripts.js"></script>		
+
+h1. {{ page.title }} 
+
+p(meta). 2011-05-02
+
+I have been playing around with "Sprite Manager":http://forum.unity3d.com/threads/16763 for "Unity":http://unity3d.com, which allows you to draw all your 2D sprites in one draw call. I wanted to be able to draw pixel perfect text using Sprite Manager and since I was unable to find any example of this, I wrote my own implementation.
+
+Click on the image below to see the text rendered inside the Unity Web Player.
+
+<div id="1"><a href="#1"><img src="/images/bitmap-font-unity-demo.png" onclick="javascript:LoadUnityAfterClick('/unity/BitmapFontDemo.unity3d', '550', '350', '1')" border="0"/></a></div>
+<noscript>
+	<object id="Object1" classid="clsid:444785F1-DE89-4295-863A-D46C3A781394" width="550" height="350" codebase="http://webplayer.unity3d.com/download_webplayer-2.x/UnityWebPlayer.cab#version=2,0,0,0">
+	<param name="src" value="/unity/BitmapFontDemo.unity3d" />
+	<embed id="UnityEmbed" src="/unity/BitmapFontDemo.unity3d" width="550" height="350" type="application/vnd.unity" pluginspage="http://www.unity3d.com/unity-web-player-2.x" />
+	<noembed>
+		<div align="center">
+			This content requires the Unity Web Player<br /><br />
+			<a href="http://www.unity3d.com/unity-web-player-2.x">Install the Unity Web Player today!</a>
+		</div>
+	</noembed>
+</object>
+</noscript>
+
+I have made a small Unity package that contains the script for my bitmap font loader and the example scene shown above. All scripts in the package except SpriteManager.cs are released into the Public Domain.
+
+"Download BitmapFontDemo.unitypackage":/files/BitmapFontDemo.unitypackage
+
+h2. Generation of bitmap font
+
+In order for Sprite Manager to be able to render text, it has to be included in a texture. For generating the font texture I used "BMFontGen":http://blogs.msdn.com/b/garykac/archive/2006/08/30/732007.aspx developed for "XNA":http://en.wikipedia.org/wiki/Microsoft_XNA. BMFontGen converts a TrueType or OpenType font into a bitmap (PNG) along with a XML descriptor file.
+
+The BitmapFontDemo package includes a parser for the XML descriptor file that can be used with Sprite Manager. I use my own "Texture Atlas Generator":/2011/04/18/texture-atlas-generator/ to combine the two font textures used in the package into one texture.
+
+When importing the font texture it is important to change "Filter Mode" to "Point" and disable "Generate Mip Maps" by setting "Texture Type" to "Advanced". Use the shader "Particles/Alpha Blended" for the material associated with the texture.
+
+h2. Pixel perfect orthographic projection
+
+To get pixel perfect rendering of the font (or any 2D for that matter) you have to setup the orthographic projection very precisely. To make this easy in the example scene included in the Unity package above, I have made a script that can be added to the camera and it will automatically setup the orthographic projection.
+
+{% highlight csharp %}
+public class Orthographic : MonoBehaviour 
+{
+  float offset = 0.0f;
+  
+  void Start()
+  {		
+    if(SystemInfo.graphicsDeviceVersion.ToLower().StartsWith("direct3d 9"))
+    {
+      offset = 0.5f;
+    }
+    camera.orthographic = true;
+  }
+	
+  void Update()
+  {
+    camera.orthographicSize = Screen.height/2;	
+    camera.transform.position = new Vector3(Screen.width/2 - offset, 
+                                Screen.height/2 - offset, -1);	
+  }
+}
+{% endhighlight %}
+
+Note that the camera is offset by a half-pixel when using Direct3D 9 on Windows, further details on why this is necessary "here":http://drilian.com/2008/11/25/understanding-half-pixel-and-half-texel-offsets/.
