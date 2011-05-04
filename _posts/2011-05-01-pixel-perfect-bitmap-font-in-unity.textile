@@ -66,3 +66,28 @@ public class Orthographic : MonoBehaviour
 {% endhighlight %}
 
 Note that the camera is offset by a half-pixel when using Direct3D 9 on Windows, further details on why this is necessary "here":http://drilian.com/2008/11/25/understanding-half-pixel-and-half-texel-offsets/.
+
+*Update*
+
+!/images/bitmap-font-unity-demo-color.png!
+
+The screenshot above shows that you can also change the color of the individual characters using Sprite Manager. I got the result above by changing the following (long) line of code in BitmapFontDemo.AddText 
+
+{% highlight csharp %}
+spriteManager.AddSprite(go, s.texCoords.width, s.texCoords.height, 
+  (int)s.texCoords.x,  (int)s.texCoords.y + (int)s.texCoords.height, 
+  (int)s.texCoords.width, (int)s.texCoords.height, false);
+{% endhighlight %}
+
+to
+
+{% highlight csharp %}
+Sprite sp = spriteManager.AddSprite(go, s.texCoords.width, s.texCoords.height, 
+  (int)s.texCoords.x,(int)s.texCoords.y + (int)s.texCoords.height, 
+  (int)s.texCoords.width, (int)s.texCoords.height, false);
+
+sp.SetColor(new Color(Random.Range(0.2f, 1.0f), Random.Range(0.2f, 1.0f), 
+  Random.Range(0.2f, 1.0f)));
+{% endhighlight %}
+
+
