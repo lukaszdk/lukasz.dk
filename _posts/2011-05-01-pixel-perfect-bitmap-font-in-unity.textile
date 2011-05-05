@@ -90,4 +90,25 @@ sp.SetColor(new Color(Random.Range(0.2f, 1.0f), Random.Range(0.2f, 1.0f),
   Random.Range(0.2f, 1.0f)));
 {% endhighlight %}
 
+*Update 2*
+
+Another minor update showing how to draw dynamic text that is updated every frame. Click on the image below to see it in action in the Unity Web Player.
+
+<div id="2"><a href="#2"><img src="/images/bitmap-font-unity-demo-2.png" onclick="javascript:LoadUnityAfterClick('/unity/BitmapFontDemo2.unity3d', '550', '450', '2')" border="0"/></a></div>
+<noscript>
+	<object id="Object2" classid="clsid:444785F1-DE89-4295-863A-D46C3A781394" width="550" height="450" codebase="http://webplayer.unity3d.com/download_webplayer-2.x/UnityWebPlayer.cab#version=2,0,0,0">
+	<param name="src" value="/unity/BitmapFontDemo2.unity3d" />
+	<embed id="UnityEmbed" src="/unity/BitmapFontDemo2.unity3d" width="550" height="450" type="application/vnd.unity" pluginspage="http://www.unity3d.com/unity-web-player-2.x" />
+	<noembed>
+		<div align="center">
+			This content requires the Unity Web Player<br /><br />
+			<a href="http://www.unity3d.com/unity-web-player-2.x">Install the Unity Web Player today!</a>
+		</div>
+	</noembed>
+</object>
+</noscript>
+
+"Download BitmapFontDemo2.unitypackage":/files/BitmapFontDemo2.unitypackage
+
+
 
