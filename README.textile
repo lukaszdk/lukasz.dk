@@ -1,0 +1,10 @@
+h1. About
+
+This is the the "Jekyll":http://github.com/mojombo/jekyll data that is transformed into my website "lukasz.dk":http://lukasz.dk.
+
+h1. License
+
+The following directories and their contents are Copyright Lukasz Bruun. You may not reuse anything therein without my permission:
+
+* _posts/
+* images/
