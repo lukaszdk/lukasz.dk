@@ -5,8 +5,7 @@ title: About
 
 h1. About
 
+<div class="align-right">!/images/lukasz-2011.png!</div>
 Hello, I'm Lukasz Bruun. I'm a 28-year-old computer scientist currently working as an software engineer in Denmark.
-
-<div class="shadow">!/images/lukasz-2011.png!</div>
 
 You can contact me via email at "mail@lukasz.dk":mailto:mail@lukasz.dk.

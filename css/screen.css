@@ -259,6 +259,9 @@ img
 /*
 /*****************************************************************************/
 
+.align-right { float:right; margin: 0 0 15px 15px; }
+.align-left { float:left; margin: 0 15px 15px 0; }
+
 a, a:hover, a:visited
 {
 	color: #2382c8;
@@ -269,11 +272,6 @@ h1
 	color: #2382c8;
 	display: inline;
 	font-size: 25px;
-}
-
-p
-{
-	clear:both;
 }
 
 .shadow
