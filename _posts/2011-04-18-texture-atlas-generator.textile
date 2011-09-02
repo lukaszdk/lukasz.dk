@@ -86,8 +86,48 @@ the size of the atlas to 1024x1024.
 <div class="shadow">!/images/atlas-1024-2-small.png!:/images/atlas-1024-2.png</div>
 <div class="shadow">!/images/atlas-1024-3-small.png!:/images/atlas-1024-3.png</div>
 
-Here are the .txt files for the 3 images above.
+Below are 3 .txt files for the 3 images above.
 
-* "atlas-1024-1.txt":/files/atlas-1024-1.txt
-* "atlas-1024-2.txt":/files/atlas-1024-2.txt
-* "atlas-1024-3.txt":/files/atlas-1024-3.txt
+pre. abuse_png/ammo 894 252 108 69
+abuse_png/ant 0 0 780 495
+abuse_png/cloud 357 957 68 45
+abuse_png/concus 780 453 63 34
+abuse_png/cop 0 495 429 462
+abuse_png/coptop 429 495 465 351
+abuse_png/door 894 132 72 120
+abuse_png/fonts 429 846 512 154
+abuse_png/fore_techno3 780 327 210 90
+abuse_png/lava 780 417 190 36
+abuse_png/lavap 780 0 235 132
+abuse_png/lightin 780 132 114 195
+abuse_png/mine 245 957 112 60
+abuse_png/push 429 1000 252 22
+abuse_png/tdoor 0 957 245 45
+
+<br>
+
+pre. abuse_png/back_cave 696 806 300 120
+abuse_png/blowups 696 926 301 96
+abuse_png/door_round 0 929 180 82
+abuse_png/exp1 730 270 280 192
+abuse_png/flyer 400 530 296 234
+abuse_png/fore_techno 696 671 300 135
+abuse_png/fore_techno4 540 0 420 216
+abuse_png/gun2 400 764 296 217
+abuse_png/misc 0 270 400 315
+abuse_png/rob1 696 530 296 141
+abuse_png/rob2 400 270 330 260
+abuse_png/sect 0 0 540 270
+abuse_png/teleport 0 585 252 344
+
+<br>
+
+pre. abuse_png/back_city 351 180 420 150
+abuse_png/back_intro 351 464 360 150
+abuse_png/back_tech 351 614 360 150
+abuse_png/bold 768 0 153 86
+abuse_png/fore_cave 378 0 390 165
+abuse_png/fore_techno2 0 372 270 120
+abuse_png/jug 0 0 378 180
+abuse_png/missle 0 180 351 192
+abuse_png/platform 351 330 468 134
