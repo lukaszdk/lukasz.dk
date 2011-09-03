@@ -1,7 +1,7 @@
 permalink: pretty
 pygments: true
 
-exclude: todo.txt files/
+exclude: todo.txt files/ README.textile
 
 domain: lukasz.dk
 title: Lukasz.dk - Personal website of Lukasz Bruun
