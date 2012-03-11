@@ -6,6 +6,6 @@ title: About
 h1. About
 
 <div class="align-right">!/images/lukasz-2011.png!</div>
-Hello, I'm Lukasz Bruun. I'm a 28-year-old computer scientist currently working as a software entrepreneur at a startup in Denmark.
+Hello, I'm Lukasz Paczkowski. I'm a 29-year-old computer scientist currently working as a software entrepreneur at a startup in Denmark.
 
 You can contact me via email at "mail@lukasz.dk":mailto:mail@lukasz.dk.
