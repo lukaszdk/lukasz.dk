@@ -1,9 +1,9 @@
 ---
 layout: post
-title: PS2DEV File Archive
+title: PS2DEV Archive
 ---
 
-h1. PS2DEV File Archive
+h1. PS2DEV Archive
 
 h2. Documents
 
