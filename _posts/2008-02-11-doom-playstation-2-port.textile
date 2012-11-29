@@ -32,10 +32,9 @@ L1 and L2 are for entering savegame names
 
 I will not continue to work on this port, it was just a quick nostalgic proof of concept port.
 
-*Download:* 
+Download "ps2doom-bin.zip":files/ps2doom-bin.zip (includes shareware data)
 
-* Source at "GitHub":http://github.com/lukaszpaczkowski/ps2doom
-* "ps2doom-bin.zip":files/ps2doom-bin.zip - Binary includes shareware data.
+Get the source code at "GitHub":http://github.com/lukaszpaczkowski/ps2doom
 
 *Update:* 
 
@@ -47,4 +46,4 @@ A "PS2 port":http://firehead.org/~jessh/lsdldoom/  by "Jason Yu":http://www.jaso
 
 *Download:* 
 
-* "lsdldoom-ps2-bin.zip":/lsdldoom-ps2-bin.zip
+* "lsdldoom-ps2-bin.zip":/files/lsdldoom-ps2-bin.zip

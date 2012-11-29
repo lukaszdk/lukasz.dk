@@ -1,8 +1,8 @@
 ---
-layout: home
+layout: post
 title: Page not found
 ---
 	
 h1. 404 - Page not found
 
-Could not find the page you were looking for, please check the "front page":/ to see if the page has been moved or "contact me":/about in the case of dead links.
+Could not find the page you were looking for, please check the "front page":/ to see if the page has been moved or "contact me":mailto:mail@lukasz.dk in the case of dead links.

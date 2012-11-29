@@ -1,41 +1,26 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>{{ page.title }} - Lukasz.dk</title>
-   <meta name="author" content="Lukasz Paczkowski" />
-   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
-   <link rel="stylesheet" href="/css/hightlight.css" type="text/css" media="screen, projection" />
+<meta charset="utf-8" />
+<title>{{ page.title }} - Lukasz.dk</title>
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/text.css" />
+<link rel="stylesheet" href="/css/960_24_col.css" />
+<link rel="stylesheet" href="/css/white.css" />
+<link rel="stylesheet" href="/css/hightlight.css" type="text/css" media="screen, projection" />
 </head>
 <body>
-
-<a href="http://github.com/lukaszpaczkowski"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/images/forkme.png" alt="Fork me on GitHub"></a>
-
-<div class="site">
-  <div class="title">
-    <a href="/">Lukasz.dk</a>
-    <a class="extra" href="/">home</a>
-    <a class="extra" href="/about/">about</a>
-  </div>
-  
-  {{ content }}
-  
-  <div class="footer">
-    <div class="contact">
-      <p>
-        Lukasz Paczkowski<br />
-        mail@lukasz.dk
-      </p>
-    </div>
-    <div class="contact">
-      <p>
-        <a href="http://github.com/lukaszpaczkowski/">github.com/lukaszpaczkowski</a><br />
-      </p>
-    </div>
-	<div class="rss">
-		<a href="/atom.xml"><img src="/images/rss.png" alt="Subscribe to RSS Feed" /></a>
-	</div>
-  </div>
+<div class="container_24">
+  <div class="clear"></div>
+  <div class="grid_22 prefix_1 suffix_1">
+  <div class="header"><a href="/"><img alt="Lukasz.dk" src="/images/logo.png"></a></div>
+  <hr>
 </div>
+<div class="clear"></div>
+
+{{ content }}
+
+</div>
+<!-- end .container_24 -->
 </body>
 </html>
