@@ -28,41 +28,54 @@ ul.posts a
   color: #2382c8;
 }
 
-  #post pre {
-    border: 1px solid #ddd;
-    background-color: #eef;
+#post pre {
+  border: 1px solid #ddd;
+  background-color: #eef;
   font-size: 1em;
-    padding: 0 .4em;
+  padding: 0 .4em;
   line-height: 1.1em;
-  }
+}
 
-  #post ul,
-  #post ol {
-    margin-left: 1.35em;
-  }
+#post ul,
+#post ol {
+  margin-left: 1.35em;
+}
 
-  #post code {
-    border: 1px solid #ddd;
-    background-color: #eef;
-    font-size: 85%;
-    padding: 0 .2em;
-  }
+#post code {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  font-size: 85%;
+  padding: 0 .2em;
+}
 
-    #post pre code {
-      border: none;
-    }
+#post pre code {
+  border: none;
+}
 
-  /* terminal */
+/* terminal */
 
-  #post pre.terminal {
-    border: 1px solid black;
-    background-color: #333;
-    color: white;
-  }
+#post pre.terminal {
+  border: 1px solid black;
+  background-color: #333;
+  color: white;
+}
 
-  #post pre.terminal code {
-    background-color: #333;
-  }
+#post pre.terminal code {
+  background-color: #333;
+}
+
+#post table
+{
+  width: 80%;
+}
+
+
+#post td, th
+{
+  padding: 2px;
+  font-size: 85%;
+  text-align: center;
+}
 
 a {
   color: #2a7fff;
