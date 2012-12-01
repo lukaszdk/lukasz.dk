@@ -7,3 +7,6 @@ domain: lukasz.dk
 title: Lukasz.dk - Personal website of Lukasz Paczkowski
 author: Lukasz Paczkowski
 email: mail@lukasz.dk
+
+ftp_host: lukasz.dk
+ftp_dir: /public_html
