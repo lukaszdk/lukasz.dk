@@ -32,7 +32,7 @@ L1 and L2 are for entering savegame names
 
 I will not continue to work on this port, it was just a quick nostalgic proof of concept port.
 
-Download "ps2doom-bin.zip":files/ps2doom-bin.zip (includes shareware data)
+Download "ps2doom-bin.zip":/files/ps2doom-bin.zip (includes shareware data)
 
 Get the source code at "GitHub":http://github.com/lukaszpaczkowski/ps2doom
 
