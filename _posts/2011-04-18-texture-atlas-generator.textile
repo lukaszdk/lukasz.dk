@@ -13,7 +13,7 @@ To reduce the number of draw calls for textured polygons, you can put all your i
 
 If you have all your textures as separate files, then creating the atlas by hand can be a quite painstaking experience. I have therefor made this small, single file, Java application that will recursively load PNG (can easily be modified to support other formats) from a folder and create one or more PNG texture atlases.
 
-Get it on GitHub : "Texture Atlas Generator":http://github.com/lukaszpaczkowski/texture-atlas-generator
+Get it on GitHub : "Texture Atlas Generator":http://github.com/lukaszdk/texture-atlas-generator
 
 The texture packing algorithm used in this atlas generator is the "Lightmap Packing Algorithm":http://www.blackpawn.com/texts/lightmaps/ by "Black Pawn":http://www.blackpawn.com. The images are added to the atlas by area size (width x height), in descending order.
 

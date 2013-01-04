@@ -34,7 +34,7 @@ I will not continue to work on this port, it was just a quick nostalgic proof of
 
 Download "ps2doom-bin.zip":/files/ps2doom-bin.zip (includes shareware data)
 
-Get the source code at "GitHub":http://github.com/lukaszpaczkowski/ps2doom
+Get the source code at "GitHub":http://github.com/lukaszdk/ps2doom
 
 *Update:* 
 

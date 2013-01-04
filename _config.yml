@@ -4,8 +4,8 @@ pygments: true
 exclude: todo.txt files/ README.textile
 
 domain: lukasz.dk
-title: Lukasz.dk - Personal website of Lukasz Paczkowski
-author: Lukasz Paczkowski
+title: Lukasz.dk - Personal website of Lukasz
+author: Lukasz
 email: mail@lukasz.dk
 
 ftp_host: lukasz.dk

@@ -4,7 +4,7 @@ This is the the "Jekyll":http://github.com/mojombo/jekyll data that is transform
 
 h1. License
 
-The following directories and their contents are Copyright Lukasz Paczkowski. You may not reuse anything therein without my permission:
+The following directories and their contents are Copyright Lukasz. You may not reuse anything therein without my permission:
 
 * _posts/
 * images/
