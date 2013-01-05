@@ -202,7 +202,7 @@ The original CD/DVD driver for the PlayStation 2 only supported very limited CD/
 Sound programming on the PS2 was a bit difficult in the beginning, as it required a IOP module which used LIBSD module (lowlevel sound library). SjPCM was a simple module with a EE RPC library, which made it easy to feed PCM data to the SPU2. This module became quite popular and is used in many PS2 programs. There is also a variant available, iSjPCM which does not require LIBSD. 
 
 *03.11.02 - [RO]man opens website* 
-[RO]man maintained a website called "PS2DEV: Bios Details for Developers", where he posted code for reversed IOP modules among other things. The code actually doesn't compile, but it shows what is going on inside IOP modules. The website is no longer available, I've mirrored some of the files "here":/playstation-2-programming/file-archive/. 
+[RO]man maintained a website called "PS2DEV: Bios Details for Developers", where he posted code for reversed IOP modules among other things. The code actually doesn't compile, but it shows what is going on inside IOP modules. The website is no longer available, I've mirrored some of the files "here":/playstation-2-programming/archive/. 
 
 *20.12.02 - PS2Reality release DivX player* 
 A spanish group of coders release a media player which plays DivX movies, it got alot of attention in the press. There is another DivX player available called "Simple Media System":http://sms.psx-scene.com/eng/index.htm 
@@ -293,7 +293,7 @@ This graphics library by Neovanglist was announced and later became the most pop
 
 <div class="shadow">!/images/oddment1.jpg!</div>
 
-adresd, emoon, jar, raizor and TyRaNiD worked together to create this demo for "Breakpoint 2004":http://breakpoint.untergrund.net/2004/index.php. Music by Trinodia. It finished #7 in the Console/Real Wild category. "Download here":/playstation-2-programming/file-archive/  
+adresd, emoon, jar, raizor and TyRaNiD worked together to create this demo for "Breakpoint 2004":http://breakpoint.untergrund.net/2004/index.php. Music by Trinodia. It finished #7 in the Console/Real Wild category. "Download here":/playstation-2-programming/archive/  
 
 *06.09.04 - PS2SDK 1.1 released* 
 First updated version of PS2SDK was released as a binary, not many binary release were made after this one. I always recommend to build PS2SDK yourself, as there are many changes from the last official binary release. 
