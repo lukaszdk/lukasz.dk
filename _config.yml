@@ -4,7 +4,7 @@ pygments: true
 exclude: todo.txt files/ README.textile
 
 domain: lukasz.dk
-title: Lukasz.dk - Personal website of Lukasz
+title: Lukasz.dk
 author: Lukasz
 email: mail@lukasz.dk
 
