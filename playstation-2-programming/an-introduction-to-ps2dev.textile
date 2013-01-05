@@ -13,7 +13,9 @@ h1. PS2 Architecture
 
 h2. Documentation
 
-The EE, VUs and GS are fully documented in the manuals from Sony, these come with the PlayStation 2 Linux Kit. I bought the PlayStation 2 Linux Kit just to get the manuals :-) The following manuals are included* EE Core Instruction Set Manual
+The EE, VUs and GS are fully documented in the manuals from Sony, these come with the PlayStation 2 Linux Kit. I bought the PlayStation 2 Linux Kit just to get the manuals :-) The following manuals are included
+
+* EE Core Instruction Set Manual
 * EE Core Users Manual
 * EE Users Manual
 * GS Users Manual
