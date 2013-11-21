@@ -13,7 +13,7 @@ p(meta). 2008-02-11
 
 **Original post:**
 
-"Doom by id Software":http://en.wikipedia.org/wiki/Doom_%28video_game%29 appears to available for every platform known to man, except for the PlayStation 2. So I wondered how long it would take to port it over to PS2 and the answer to that question turned out to be less than 3 hours. Using the PS2 port of SDL, gsKit (SDL requires it for video) and PS2SDK, all available from "PS2dev.org Subversion repository":http://svn.ps2dev.org and a SDL port of Doom "available here":http://www.libsdl.org/projects/doom/, I managed to get a very basic (read: hackish) port of Doom running on the PS2 without much effort.
+"Doom by id Software":http://en.wikipedia.org/wiki/Doom_%28video_game%29 appears to available for every platform known to man, except for the PlayStation 2. So I wondered how long it would take to port it over to PS2 and the answer to that question turned out to be less than 3 hours. Using the PS2 port of SDL, gsKit (SDL requires it for video) and PS2SDK, all available from "ps2dev on GitHub":https://github.com/ps2dev and a SDL port of Doom "available here":http://www.libsdl.org/projects/doom/, I managed to get a very basic (read: hackish) port of Doom running on the PS2 without much effort.
 
 <div class="shadow">!/images/ps2doom1.jpg!</div>
 

@@ -22,26 +22,26 @@ Cygwin has a very easy to use interface for installing, namely setup.exe. "Downl
 *Note about setup.exe:* setup.exe keeps downloaded files from different mirrors in different folders, which means that it will download everything you already have downloaded and installed again if you hange mirrors, so don't :) For compiling the PS2 toolchain, you need the following packages besides from the preselected packages.
 
 * diffutils
+* git
 * gcc
 * make
 * patch
 * perl
-* svn
 * wget
 
 Download and install them with setup.exe. In case Cygwin complains about other missing programs, just use setup.exe to download and install them.
 
 h2. Building the toolchains
 
-What you need now is the famous toolchain script from Dan Peori (ooPo), it is available from the Subversion repository. Subversion is a source control tool which allows many people to work on the same source code. ps2dev.org runs a Subversion (SVN) server. "http://svn.ps2dev.org":http://svn.ps2dev.org Log into Cygwin and get the toolchain script by checking it out from svn with the command listed below. 
+What you need now is the famous toolchain script from Dan Peori (ooPo), it is available from the PS2DEV git repository on GitHub. Git is a distributed source control tool which allows many people to work on the same source code. The git repository is available at Github. "http://github.com/ps2dev":http://github.com/ps2dev Log into Cygwin and get the toolchain script by checking it out from git with the command listed below. 
 
 *Note:* Its best to avoid building sources in paths with spaces, for instance /home/joe doe/, before doing the checkout use the command _pwd_ to see if you are in a directory with spaces, if thats the case checkout the files in another directory. 
 
 {% highlight sh %}
-svn checkout svn://svn.ps2dev.org/ps2/trunk/ps2toolchain
+git clone https://github.com/ps2dev/ps2toolchain.git
 {% endhighlight %}
 
-It will now download the files from svn. If you need to the path for other ps2dev projects. Use svn.ps2dev.org in your browser to get a listing of projects and their paths. 
+It will now download the files from the git respository. If you need to the path for other ps2dev projects.
 
 Now enter the ps2toolchain directory and type *ls* . You will see a bunch of files, the interesting one is the toolchain.sh. Its a shell script which executes all the commands needed for downloading/building the toolchain sources, so we can just lay back and relax. First you need to make the script executable, by typing 
 

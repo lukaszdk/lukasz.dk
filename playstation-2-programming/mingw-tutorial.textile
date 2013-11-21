@@ -44,10 +44,10 @@ Once you have done this, you are ready to either build the PS2 toolchains yourse
 
 h2. Option 1: Build the PS2 toolchains (recommended)
 
-Log into MinGW using MSYS (you should have a shortcut on your desktop). Now export the ps2toolchain scripts by "ooPo":http://www.oopo.net from the "PS2Dev Subversion repository":http://svn.ps2dev.org using the following command in a directory without spaces (you can check this by typing _pwd_ ) 
+Log into MinGW using MSYS (you should have a shortcut on your desktop). Now export the ps2toolchain scripts by "ooPo":http://www.oopo.net from "ps2dev on Github":http://github.com/ps2dev using the following command in a directory without spaces (you can check this by typing _pwd_ ) 
 
 {% highlight sh %}
-svn export svn://svn.ps2dev.org/ps2/trunk/ps2toolchain
+git clone https://github.com/ps2dev/ps2toolchain.git
 {% endhighlight %}
 
 Change to the ps2toolchain directory (cd ps2toolchain) and type 

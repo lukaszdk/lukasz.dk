@@ -41,7 +41,7 @@ VU Manual by Bigboss. I made some additions/changes and converted it to PDF.
 h2. Links
 
 "PS2DEV: PS2 Programming":http://www.ps2dev.org
-Also check out  and the "Subversion repository":http://svn.ps2dev.org. Many of the Subversion repositories are now also on "GitHub":https://github.com/ps2dev.
+Also check out git source code repositories on "GitHub":https://github.com/ps2dev.
 
 "PS2DEV forums":http://forums.ps2dev.org
 Local "website mirror":/mirror/forums.ps2dev.org from 31th of August 2010.
