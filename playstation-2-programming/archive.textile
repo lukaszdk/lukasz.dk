@@ -23,7 +23,7 @@ Slides by George Bain from SCEE
 From SCEE Research And Development
 
 "Texture and geometry syncing":/files/TextureGeometrySyncing.pdf
-From SCEE Research And Development
+From "SCEE Research And Development":http://develop.scee.net/articles
 
 "The Making of Shadow of the Collosus":/files/making_of_sotc.pdf
 Not a very technical document, but gives some insight into the techniques used for this game.
@@ -55,6 +55,10 @@ Even though this site is about PlayStation 2 Linux programming, it contains a lo
 
 "CDVDMANIA":http://www.cdvdmania.com.ru
 CDVDMANIA is a private non-profit site dedicated to programming and reverse engineering for PlayStation 2 console and to in-depth technical information on its hardware components. Local "website mirror":/mirror/cdvdmania from 7th of July 2010.
+
+"Sony Computer Entertainment US R&D":http://research.scea.com/
+Public Research website from SCEA. Local "website mirror":/mirror/research-scea/research/research.html from an older version of the website that also contained PS2 related articles.
+
 
 h2. Source code and low level information
 

@@ -1,7 +1,7 @@
 permalink: pretty
 pygments: true
 
-exclude: todo.txt files/ README.textile
+exclude: todo.txt files/ mirror/ README.textile
 
 domain: lukasz.dk
 title: Lukasz.dk
