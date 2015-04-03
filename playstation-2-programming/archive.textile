@@ -77,6 +77,35 @@ Reversed engineered IOP modules and other files from [RO]man's website "PS2DEV: 
 * "padspecs.txt":/files/padspecs.txt
 * "unpack.zip":/files/unpack.zip
 
+"IOP .IRX Fileformat":/files/irxfileformat.txt
+Details of the IOP .IRX fileformat. Unknown author.
+
+"ps2boot.txt":/files/ps2boot.txt
+Information on the contents of the ps2 boot sectors by loser
+
+"Funslower source code":/files/FSsource.zip
+Source code for "Soopadoopa's Funslower demo":http://www.pouet.net/prod.php?which=3966
+!/images/funslower.jpg!
+
+
+"Aura for Laura source code":/files/AuraSource.tar.gz
+Source code for "Soopadoopa's Aura for Laura demo":http://www.pouet.net/prod.php?which=10435
+!/images/aura10.jpg! 
+
+
+"Amigamod 1.0 source code":/files/amigamod_vzzrzzn.zip and "Amigamod 1.1 source code":/files/amigamod_v1.1.zip
+IOP based Protracker (Amiga) format .MOD music player by Vzzrzzn.
+
+"pillgen source code":/files/pillgen.zip
+C++ source code for Vzzrzzn's pillgen demo.
+!/images/pills.jpg! 
+
+"Jasper Demo source code":/files/jaspersrc.zip
+Originally released on "Duke/Napalm's website":https://web.archive.org/web/20010830022015/http://duke.napalm-x.com/
+
+"jfyeNG source code":/files/jfyeNGSources.zip
+A Newtek LightWave scene player for Windows and PS2 by Arnaud STORQ a.k.a. No Recess
+
 *Sps2demo - binary and source repository dump*
 
 Sps2demo files from "http://playstation2-linux.com/projects/sps2demo/":http://playstation2-linux.com/projects/sps2demo/, released by sparky and exoticorn. Source code only compatible with PS2Linux. However there is some general PS2 code which could be used in PS2DEV if ported, such as the RGBA Indexer for post effects (blur, crashzoom, depth of field, fade to grey, glare), texture swizzling, DMA chain disassembler, GS VNC (remote desktop) and more.
@@ -102,6 +131,9 @@ A great PS2 disassembler by Hanimar. "Website":http://reocities.com/siliconvalle
 
 "Breakpoint 2004":http://breakpoint.untergrund.net/2004/ demo by adresd, emoon, jar, raizor and TyRaNiD. Music by Trinodia.
 
+"PS2 Racer by jbit":/files/PS2-Racer-ancient.tar.bz2
+PS2 demo/game by jbit.
 
+!/images/ps2-racer.jpg! 
 
-
+"b000p - a PS2 demo by raizor":/files/b000p.zip
