@@ -35,7 +35,7 @@ What makes the EE different from other MIPS processors is that it has Multimedia
 
 The two VUs are connected to the EE, the VU0 more tightly than the VU1. The VU0 is not connected to the GS, like the VU1. You can use the VU0 in two modes, macro or micro. Macro means that you inline the VU0 instructions along with the rest of your EE code and in micro you create a microprogram which you then upload the the VU0 and execute. The VU1 only works in micro mode. 
 
-In the first 1 MB region of the EE memory sits the EE kernel, which is loaded from the BIOS at startup. The kernel contains alot of system calls which can be invoked using the _syscall_ instruction. Among the system calls are functions for threads, interrupts, thread synchronization, etc. The kernel is very basic and does not contain any system calls for handling I/O, except for a few system calls which are able to load EE programs (extension .ELF) which use I/O internally. PS2SDK supports all the known system calls.
+In the first 1 MB region of the EE memory sits the EE kernel, which is loaded from the BIOS at startup. The kernel contains a lot of system calls which can be invoked using the _syscall_ instruction. Among the system calls are functions for threads, interrupts, thread synchronization, etc. The kernel is very basic and does not contain any system calls for handling I/O, except for a few system calls which are able to load EE programs (extension .ELF) which use I/O internally. PS2SDK supports all the known system calls.
 
 h2. Vector Units (VUs)
 
@@ -45,7 +45,7 @@ When using the VUs in micro mode, you pair two instructions pr. clock cycle, upp
 
 The VU0 is connected to the EE and to use it effectively in micro mode (see above for a description of macro mode), you need upload your micro program, upload your data to the VU0 data memory and then start your micro program. Once its finished, you then need to read the VU0 data memory to get the result. This could be used for asynchronous matrix, lighting, etc. operations. I once read somewhere that most commercial games dont take full advantage of the PS2, because they do not stress the VU0 the same way as they do the VU1. One could see the reason for this, as you would need to consider the VU0 from the very beginning in your game design, in order to make efficient usage of it. 
 
-The VU1 is different from the VU0 in the sense that it only works in the micro mode and thats its directly connected to the GS. It also has more instructions than the VU0, some specialized for rendering, such as clipping instructions. The main usage of the VU1 is to do polygon operations like applying matrices to the vertices, clipping, creating GS packets which get kicked to the GS. You could however also use it for other things such as animation, procedural generation of models, etc. The VU1 is very flexible. Advanced use of the VU1 can be seen in the "sps2 project":http://playstation2-linux.com/projects/sps2/ (PS2LINUX), among things it uses the VU1 for post effects. 
+The VU1 is different from the VU0 in the sense that it only works in the micro mode and thats its directly connected to the GS. It also has more instructions than the VU0, some specialized for rendering, such as clipping instructions. The main usage of the VU1 is to do polygon operations like applying matrices to the vertices, clipping, creating GS packets which get kicked to the GS. You could however also use it for other things such as animation, procedural generation of models, etc. The VU1 is very flexible. Advanced use of the VU1 can be seen in the "sps2 project":/playstation-2-programming/archive/, among things it uses the VU1 for post effects. 
 
 Programming on the VUs is what makes PS2DEV interesting from a graphics point of view, as the PS2 is only computer which contains them. There is a bit of a steep learning curve with VU programming, which can become even steeper if you have never written your own renderer from scratch. 
 
@@ -55,7 +55,7 @@ h2. Graphics Synthesizer (GS)
 
 The Graphics Synthesizer (GS) is the rastering unit of the PS2, connected to 4 MB of VRAM, where both framebuffers and textures have to reside. It supports the basic features of rastering polygons, texturing, alpha blending, basic scissoring, zbuffer, etc. It does not support clipping, so you have to do this manually yourself. 
 
-You may think that that 4 MB of VRAM isn't alot, however keep in mind that the GS runs 150 MHZ and the bus is 128-bit wide, if you do the math you will see that it is in theory capable of transferring about 76 MB pr. frame at 30 frames/sec, which over twice the size of the EE memory. What this implies is that if you are doing a more involved graphics project on the PS2, you will also need to use a (or make your own) VRAM texture manager, as the textures will get replaced all the time in VRAM during rendering. There are different ways to send rastering data to the GS, these ways are referred to as _paths_ and there are 3 of them.
+You may think that that 4 MB of VRAM is not a lot, however keep in mind that the GS runs 150 MHZ and the bus is 128-bit wide, if you do the math you will see that it is in theory capable of transferring about 76 MB pr. frame at 30 frames/sec, which over twice the size of the EE memory. What this implies is that if you are doing a more involved graphics project on the PS2, you will also need to use a (or make your own) VRAM texture manager, as the textures will get replaced all the time in VRAM during rendering. There are different ways to send rastering data to the GS, these ways are referred to as _paths_ and there are 3 of them.
 
 * Path 1 is where you upload your data to the VU1 through the VU1 Interface (VIF1) and then run your VU1 programs which transforms your data and kicks it of the GS.
 * Path 2 is also through the VIF1, but the data does is not stored in VU1 memory and no VU1 program is executed. The data is transferred directly to the GS through VIF1.
@@ -95,7 +95,7 @@ There is quite a difference between programming using the PS2DEV tools and using
 
 h2. Toolchain
 
-The compiler used for PS2DEV is a port of GCC and associated tools, ported by people in PS2DEV and is not part of the official GCC releases. There are separate GCC compilers and assemblers for EE, IOP and VU. The toolchains have been used for a long time and alot of different projects and have been proven over time to be stable. 
+The compiler used for PS2DEV is a port of GCC and associated tools, ported by people in PS2DEV and is not part of the official GCC releases. There are separate GCC compilers and assemblers for EE, IOP and VU. The toolchains have been used for a long time and a lot of different projects and have been proven over time to be stable. 
 
 To get the toolchains, you need to download, patch, configure and compile them yourself. Luckily this process has become very easy because of the famous toolchain script by ooPo, which you just execute and it does everything for you. If you are using Windows, I've written a two tutorials on how to setup the toolchains in "Cygwin":/playstation-2-programming/cygwin-tutorial/ and "MinGW":/playstation-2-programming/mingw-tutorial/.
 
@@ -152,7 +152,7 @@ First small PS2 graphics library to be used together with GCC. I don't think any
 
 !/images/pills.jpg! 
 
-Pillgen by Vzzrzzn is the first demo written completely in C. It came with the source code and had very good performance for its time. I used this source code as a reference for many things back when it was released. 
+Pillgen by Vzzrzzn is the first demo written completely in C. It came with the source code and had very good performance for its time. I used this source code as a reference for many things back when it was released. "Download source code here":/playstation-2-programming/archive/
 
 *17.09.01 - PS(x)lib released* 
 Psx2lib, later ps2lib and eventually ps2sdk, by Gustav Scotti is released. This is the first public attempt to reverse the SIFRPC libraries, which was a milestone in getting I/O (IOP) support. It later turned out that this code was quite buggy and it was completely replaced in PS2SDK by Marcus R. Browns SIFRPC code, which is still used today and has proven over time to be stable. 
@@ -161,7 +161,7 @@ Psx2lib, later ps2lib and eventually ps2sdk, by Gustav Scotti is released. This 
 
 !/images/funslower.jpg!
 
-Demo by Danish demo group Soopa Doopa, first PS2DEV program to use VU1 for rendering. A milestone in PS2DEV. 
+Demo by Danish demo group Soopa Doopa, first PS2DEV program to use VU1 for rendering. A milestone in PS2DEV. "Download source code here":/playstation-2-programming/archive/
 
 *11.12.01 - Naplink released*  
 
@@ -175,7 +175,7 @@ Pukko reversed the EE SIFRPC library (padlib) for joypads for usage together wit
 h2. Year 2002
 
 *06.03.02 - First Dreamtime Tutorials* 
-The tutorials by Dreamtime got quite a lot of attention (and still do) and got alot people introduced to PS2DEV. However the code is quite outdated and would require some porting efforts to make it work with the current toolchains and libraries. 
+The tutorials by Dreamtime got quite a lot of attention (and still do) and got a lot people introduced to PS2DEV. However the code is quite outdated and would require some porting efforts to make it work with the current toolchains and libraries. 
 
 *20.04.02 - IOP GCC outputs IRX* 
 Karmix patched the IOP GCC port to output IRX files directly. Before this period the quite buggy elf2irx was used and this patch really improved the quality of GCC for the IOP. 
@@ -190,7 +190,7 @@ The Third Creation started as a demo competition started by some people in the #
 Libito was my graphics library, it was one of the first real graphics libraries. The project is now discontinued and now most people used "gsKit by Neovanglist":http://ps2dev.org/PS2/Projects/Libraries/gsKit. 
 
 *22.05.02 - PS2 Linux Kit PAL/NTSC released* 
-The PS2Linux is released in PAL/NTSC territories and the website "playstation2-linux.com":http://www.playstation2-linux.com opens. With this kit you could program the VUs, check out the "sps2 project":http://http//playstation2-linux.com/projects/sps2 for advanced VU programming. The VU code can also be used in PS2DEV, if ported. 
+The PS2Linux is released in PAL/NTSC territories and the website "playstation2-linux.com":http://www.playstation2-linux.com opens. With this kit you could program the VUs, check out the "sps2 project":/playstation-2-programming/archive/ for advanced VU programming. The VU code can also be used in PS2DEV, if ported. 
 
 *17.06.02 - Amigamod released* 
 Amigamod by Vzzrzzn was a .MOD music player which ran entirely on the IOP, the first advanced IOP module. 
@@ -205,7 +205,7 @@ Sound programming on the PS2 was a bit difficult in the beginning, as it require
 [RO]man maintained a website called "PS2DEV: Bios Details for Developers", where he posted code for reversed IOP modules among other things. The code actually doesn't compile, but it shows what is going on inside IOP modules. The website is no longer available, I've mirrored some of the files "here":/playstation-2-programming/archive/. 
 
 *20.12.02 - PS2Reality release DivX player* 
-A spanish group of coders release a media player which plays DivX movies, it got alot of attention in the press. There is another DivX player available called "Simple Media System":http://sms.psx-scene.com/eng/index.htm 
+A spanish group of coders release a media player which plays DivX movies, it got a lot of attention in the press. There is another DivX player available called "Simple Media System":http://sms.psx-scene.com/eng/index.htm 
 
 h2. Year 2003
 
@@ -246,13 +246,13 @@ Major overhaul in PS2Lib, both in structure and code. This was the beginning of 
 jenova0 released his closed source OpenGL implemtentation, also uses Path 3 as far as I know and I dont it was actually used in any PS2 programs. 
 
 *03.07.03 - ps2drv released* 
-Marcus R. Brown releases a framework for programming IOP modules, called ps2drv (ps2 driver). This framework made it alot easier to define IOP module imports and exports. This would later be merged with PS2Lib and other libraries to PS2SDK. 
+Marcus R. Brown releases a framework for programming IOP modules, called ps2drv (ps2 driver). This framework made it a lot easier to define IOP module imports and exports. This would later be merged with PS2Lib and other libraries to PS2SDK. 
 
 *04.08.03 - Aura for Laura released*
 
 !/images/aura10.jpg! 
 
-The second demo fro Soopa Doopa, this time with sound. This demo won the Best Effects award at "Scene.org Awards":http://en.wikipedia.org/wiki/Scene.org_Awards in 2003. 
+The second demo fro Soopa Doopa, this time with sound. This demo won the Best Effects award at "Scene.org Awards":http://en.wikipedia.org/wiki/Scene.org_Awards in 2003. "Download source code here":/playstation-2-programming/archive/
 
 *16.08.03 - PS2 Independence Exploit* 
 Longtime PS2 hacker Marcus R. Brown releases the Independence Exploit. A buffer overflow exploit which can be triggered using a custom file on the memory card and an original PSOne game. This exploit was patched in later PS2 models. This exploit does not bypass the original PS2 disc protection, it just loads a PS2 program from the memory card into memory. 
@@ -275,7 +275,7 @@ h2. Year 2004
 
 <div class="shadow">!/images/ps2link.jpg!</div>
 
-Pukklink was renamed PS2Link and released. The source code for PS2Link is quite dated and could use an overhaul. There are still updates being made to it and it works very well, despite the code being dated. 
+Pukklink was renamed to PS2Link and released. The source code for PS2Link is quite dated and could use an overhaul. There are still updates being made to it and it works very well, despite the code being dated. 
 
 *05.02.04 - Toolchain script released*
 ooPo releases the first version of his toolchain script, which automatically setups the toolchains, ps2sdk and ps2client. 
@@ -302,7 +302,10 @@ First updated version of PS2SDK was released as a binary, not many binary releas
 emoon and chip release their own free variant of VCL, a tool available for licensed developers were you could write VU programs in a C like language and it would the generate optimized VU code for you. Linux and Windows binaries of VCL were released a few months later and this project hasn't been updated since. 
 
 *12.12.04 - PlayStation Portable released* 
-When the PSP was released, many PS2 developers moved over to it and PS2DEV began to slow down. *23.12.04 - VCL binaries released* VCL binaries released, a tool for writing VU code in a C-like language. "Download here":http://playstation2-linux.com/projects/vcl 
+When the PSP was released, many PS2 developers moved over to it and PS2DEV began to slow down. 
+
+*23.12.04 - VCL binaries released* 
+VCL binaries released, a tool for writing VU code in a C-like language. "Download here":/playstation-2-programming/archive/
 
 h2. Year 2005
 
@@ -323,7 +326,7 @@ Demo by The Black Lotus (TBL) released at Breakpoint 2006. Very advanced demo, s
 
 !/images/ps2-racer.jpg! 
 
-Ps2 Racer by jbit was the game that won the PS2DEV.org game competition. It uses VU1 renderer and is quite playable, I recommend checking it out. "Download here":http://ps2dev.org/The_Fourth_Creation/PS2-Racer , "original forum post by jbit":http://forums.ps2dev.org/viewtopic.php?p=42478#42478. 
+Ps2 Racer by jbit was the game that won the PS2DEV.org game competition. It uses VU1 renderer and is quite playable, I recommend checking it out. "Download here":/playstation-2-programming/archive/
 
 *06.11.06 - PS3 released* 
 When the PS3 got released, then most of the remaining PS2DEV developers who didnt switch to PSP, switched to PS3. After the PS3 was released, PS2 became "old" and PS2DEV slowed down dramatically.
