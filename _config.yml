@@ -1,7 +1,7 @@
 permalink: pretty
-pygments: true
+highlighter: pygments
 
-exclude: todo.txt files/ mirror/ README.textile
+exclude: [todo.txt, files/, mirror/, README.textile]
 
 domain: lukasz.dk
 title: Lukasz.dk
