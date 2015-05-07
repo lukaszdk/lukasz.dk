@@ -46,6 +46,9 @@ Also check out git source code repositories on "GitHub":https://github.com/ps2de
 "PS2DEV forums":http://forums.ps2dev.org
 Local "website mirror":/mirror/forums.ps2dev.org from 31th of August 2010.
 
+"Duke's Coding [Mirror]":http://napalm-x.thegypsy.com/duke/
+Home of the famous 3 Stars demo. Local "website mirror":/mirror/duke.napalm-x.com/ from 7th of May 2015
+
 "PlayStation 2 Linux Community":http://www.playstation2-linux.com
 -A support site for the PlayStation 2 Linux kit. Has a lot of programming projects and helpful information in the forums. I recommend checking out the "SPS2":http://playstation2-linux.com/projects/sps2 project and digging through the forums for technical details posted by 'sparky' (Morten Mikkelsen).-
 The site has been shut down.
